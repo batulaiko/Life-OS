@@ -1,7 +1,6 @@
-const CACHE_NAME = 'life-os-pwa-v6';
+const CACHE_NAME = 'life-os-pwa-v2';
 const ASSETS_TO_CACHE = [
   './',
-  './index.html',
   './LifeOS_Gamified_Habit_Gym_Tracker.html',
   './manifest.json',
   './icon-192.png',
