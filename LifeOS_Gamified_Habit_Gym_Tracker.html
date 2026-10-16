@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Life OS // Gamified Habit, Gym & Routine Tracker</title>
-  
+
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Life OS">
@@ -12,7 +14,7 @@
   <meta name="theme-color" content="#0A0C10">
   <meta name="application-name" content="Life OS">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  
+
   <!-- PWA Manifest & Icons -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
@@ -22,7 +24,8 @@
 
   <style>
     /* 1. AMOLED Dark (Default) */
-    :root, [data-theme="amoled"] {
+    :root,
+    [data-theme="amoled"] {
       --bg: #0A0C10;
       --header-bg: rgba(18, 21, 30, 0.92);
       --card-bg: #12151E;
@@ -205,6 +208,7 @@
       align-items: center;
       gap: 8px;
     }
+
     .brand-title {
       font-size: 1.05rem;
       font-weight: 800;
@@ -213,6 +217,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     .sync-pill {
       font-size: 0.68rem;
       font-weight: 700;
@@ -226,11 +231,13 @@
       gap: 4px;
       cursor: pointer;
     }
+
     .sync-pill.synced {
       background: rgba(16, 185, 129, 0.15);
       color: var(--accent-green);
       border-color: rgba(16, 185, 129, 0.35);
     }
+
     .sync-pill.syncing {
       background: rgba(245, 158, 11, 0.15);
       color: var(--accent-gold);
@@ -242,6 +249,7 @@
       align-items: center;
       gap: 8px;
     }
+
     .btn-header {
       background: var(--card-inner);
       border: 1px solid var(--border);
@@ -256,11 +264,13 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
+
     .btn-header.active-gear {
       border-color: var(--accent-blue);
       background: rgba(59, 130, 246, 0.18);
       color: var(--accent-blue);
     }
+
     .btn-header:active {
       transform: scale(0.95);
     }
@@ -276,14 +286,22 @@
     .view-section {
       display: none;
     }
+
     .view-section.active {
       display: block;
       animation: fadeIn 0.2s ease-out;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Cards */
@@ -314,6 +332,7 @@
       align-items: center;
       gap: 14px;
     }
+
     .avatar-box {
       width: 54px;
       height: 54px;
@@ -326,18 +345,24 @@
       font-size: 1.7rem;
       box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
     }
-    .hero-info { flex: 1; }
+
+    .hero-info {
+      flex: 1;
+    }
+
     .hero-name-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       margin-bottom: 4px;
     }
+
     .hero-level {
       font-size: 1.25rem;
       font-weight: 800;
       color: var(--accent-gold);
     }
+
     .hero-rank {
       font-size: 0.76rem;
       font-weight: 700;
@@ -346,6 +371,7 @@
       padding: 2px 8px;
       border-radius: 6px;
     }
+
     .progress-bar-bg {
       width: 100%;
       height: 8px;
@@ -355,12 +381,14 @@
       margin-top: 6px;
       border: 1px solid var(--border);
     }
+
     .progress-bar-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--accent-gold), var(--accent-green));
       border-radius: 4px;
       transition: width 0.4s ease;
     }
+
     .xp-text {
       font-size: 0.72rem;
       color: var(--text-muted);
@@ -380,6 +408,7 @@
       padding: 6px 8px;
       margin-bottom: 14px;
     }
+
     .date-btn {
       background: none;
       border: none;
@@ -388,6 +417,7 @@
       padding: 6px 12px;
       cursor: pointer;
     }
+
     .date-display {
       font-weight: 700;
       font-size: 0.92rem;
@@ -402,6 +432,7 @@
       flex-direction: column;
       gap: 8px;
     }
+
     .habit-item {
       background: var(--card-inner);
       border: 1px solid var(--border);
@@ -413,15 +444,18 @@
       transition: all 0.2s ease;
       cursor: pointer;
     }
+
     .habit-item.completed {
       background: rgba(16, 185, 129, 0.12);
       border-color: var(--accent-green);
     }
+
     .habit-left {
       display: flex;
       align-items: center;
       gap: 12px;
     }
+
     .habit-check-box {
       width: 28px;
       height: 28px;
@@ -434,20 +468,24 @@
       font-size: 1rem;
       transition: all 0.2s ease;
     }
+
     .habit-item.completed .habit-check-box {
       background: var(--accent-green);
       border-color: var(--accent-green);
       color: #fff;
     }
+
     .habit-details {
       display: flex;
       flex-direction: column;
       gap: 2px;
     }
+
     .habit-name {
       font-size: 0.92rem;
       font-weight: 600;
     }
+
     .habit-meta {
       display: flex;
       align-items: center;
@@ -455,16 +493,33 @@
       font-size: 0.7rem;
       color: var(--text-muted);
     }
+
     .stat-tag {
       font-weight: 700;
       padding: 1px 5px;
       border-radius: 4px;
       font-size: 0.64rem;
     }
-    .tag-str { background: rgba(239, 68, 68, 0.2); color: #F87171; }
-    .tag-int { background: rgba(59, 130, 246, 0.2); color: #60A5FA; }
-    .tag-will { background: rgba(245, 158, 11, 0.2); color: #FBBF24; }
-    .tag-vit { background: rgba(16, 185, 129, 0.2); color: #34D399; }
+
+    .tag-str {
+      background: rgba(239, 68, 68, 0.2);
+      color: #F87171;
+    }
+
+    .tag-int {
+      background: rgba(59, 130, 246, 0.2);
+      color: #60A5FA;
+    }
+
+    .tag-will {
+      background: rgba(245, 158, 11, 0.2);
+      color: #FBBF24;
+    }
+
+    .tag-vit {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34D399;
+    }
 
     .streak-badge {
       display: flex;
@@ -482,12 +537,14 @@
       gap: 10px;
       margin-top: 14px;
     }
+
     .wellness-box {
       background: var(--card-inner);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 10px 12px;
     }
+
     .wellness-header {
       font-size: 0.72rem;
       font-weight: 700;
@@ -496,11 +553,13 @@
       display: flex;
       justify-content: space-between;
     }
+
     .wellness-control {
       display: flex;
       align-items: center;
       gap: 8px;
     }
+
     .wellness-control input[type=range] {
       flex: 1;
       accent-color: var(--accent-blue);
@@ -519,6 +578,7 @@
       margin-bottom: 10px;
       outline: none;
     }
+
     .program-info-box {
       background: var(--card-inner);
       border-left: 3px solid var(--accent-gold);
@@ -532,6 +592,7 @@
       flex-direction: column;
       gap: 8px;
     }
+
     .prog-sec-title {
       font-weight: 800;
       color: var(--accent-gold);
@@ -539,6 +600,7 @@
       margin-bottom: 2px;
       font-size: 0.78rem;
     }
+
     .day-pills {
       display: flex;
       gap: 6px;
@@ -546,6 +608,7 @@
       overflow-x: auto;
       padding-bottom: 4px;
     }
+
     .day-pill {
       background: var(--card-inner);
       border: 1px solid var(--border);
@@ -558,11 +621,13 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
+
     .day-pill.active {
       background: rgba(59, 130, 246, 0.18);
       color: var(--accent-blue);
       border-color: var(--accent-blue);
     }
+
     .prog-exercise-row {
       background: var(--card-inner);
       border: 1px solid var(--border);
@@ -573,8 +638,18 @@
       justify-content: space-between;
       align-items: center;
     }
-    .prog-ex-name { font-size: 0.86rem; font-weight: 700; }
-    .prog-ex-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+
+    .prog-ex-name {
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .prog-ex-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
     .prog-ex-sets {
       font-size: 0.8rem;
       font-weight: 800;
@@ -593,15 +668,34 @@
       gap: 10px;
       margin-bottom: 10px;
     }
+
     .pr-card {
       background: var(--card-inner);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 12px;
     }
-    .pr-exercise { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
-    .pr-weight { font-size: 1.3rem; font-weight: 800; color: var(--text); margin: 4px 0 2px 0; }
-    .pr-meta { font-size: 0.68rem; color: var(--accent-green); display: flex; justify-content: space-between; }
+
+    .pr-exercise {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .pr-weight {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text);
+      margin: 4px 0 2px 0;
+    }
+
+    .pr-meta {
+      font-size: 0.68rem;
+      color: var(--accent-green);
+      display: flex;
+      justify-content: space-between;
+    }
+
     .empty-state {
       text-align: center;
       padding: 18px 12px;
@@ -613,7 +707,10 @@
     }
 
     /* Measurement Table */
-    .table-scroll { overflow-x: auto; }
+    .table-scroll {
+      overflow-x: auto;
+    }
+
     .measure-table {
       width: 100%;
       border-collapse: collapse;
@@ -621,11 +718,14 @@
       margin-top: 6px;
       white-space: nowrap;
     }
-    .measure-table th, .measure-table td {
+
+    .measure-table th,
+    .measure-table td {
       padding: 8px 8px;
       text-align: left;
       border-bottom: 1px solid var(--border);
     }
+
     .measure-table th {
       color: var(--text-muted);
       font-weight: 700;
@@ -641,6 +741,7 @@
       padding: 10px 12px;
       margin-bottom: 8px;
     }
+
     .routine-step-title {
       font-size: 0.85rem;
       font-weight: 700;
@@ -648,6 +749,7 @@
       display: flex;
       justify-content: space-between;
     }
+
     .routine-step-desc {
       font-size: 0.75rem;
       color: var(--text-muted);
@@ -676,6 +778,7 @@
       margin-top: 6px;
       flex-wrap: wrap;
     }
+
     .pomo-dot {
       width: 10px;
       height: 10px;
@@ -683,10 +786,12 @@
       background: var(--border);
       transition: all 0.2s ease;
     }
+
     .pomo-dot.done {
       background: var(--accent-green);
       box-shadow: 0 0 6px var(--accent-green);
     }
+
     .pomo-dot.current {
       background: var(--accent-gold);
       transform: scale(1.2);
@@ -699,6 +804,7 @@
       gap: 6px;
       margin-top: 8px;
     }
+
     .heatmap-cell {
       aspect-ratio: 1;
       border-radius: 8px;
@@ -711,11 +817,35 @@
       font-size: 0.72rem;
       font-weight: 700;
     }
-    .heat-0 { background: var(--card-inner); color: var(--text-muted); }
-    .heat-1 { background: rgba(16, 185, 129, 0.2); color: var(--text); border-color: rgba(16, 185, 129, 0.4); }
-    .heat-2 { background: rgba(16, 185, 129, 0.45); color: #fff; border-color: rgba(16, 185, 129, 0.6); }
-    .heat-3 { background: rgba(16, 185, 129, 0.75); color: #fff; border-color: var(--accent-green); }
-    .heat-4 { background: var(--accent-green); color: #fff; font-weight: 800; }
+
+    .heat-0 {
+      background: var(--card-inner);
+      color: var(--text-muted);
+    }
+
+    .heat-1 {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--text);
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+
+    .heat-2 {
+      background: rgba(16, 185, 129, 0.45);
+      color: #fff;
+      border-color: rgba(16, 185, 129, 0.6);
+    }
+
+    .heat-3 {
+      background: rgba(16, 185, 129, 0.75);
+      color: #fff;
+      border-color: var(--accent-green);
+    }
+
+    .heat-4 {
+      background: var(--accent-green);
+      color: #fff;
+      font-weight: 800;
+    }
 
     /* Radar Canvas */
     .chart-container {
@@ -734,6 +864,7 @@
       gap: 8px;
       margin-top: 10px;
     }
+
     .mini-stat-card {
       background: var(--card-inner);
       border: 1px solid var(--border);
@@ -741,11 +872,26 @@
       padding: 8px;
       text-align: center;
     }
-    .mini-stat-val { font-size: 1rem; font-weight: 800; margin-top: 2px; }
-    .mini-stat-lbl { font-size: 0.65rem; font-weight: 700; color: var(--text-muted); }
+
+    .mini-stat-val {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+
+    .mini-stat-lbl {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
 
     /* Achievements Grid */
-    .badge-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+    .badge-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
     .badge-card {
       background: var(--card-inner);
       border: 1px solid var(--border);
@@ -755,18 +901,52 @@
       align-items: center;
       gap: 12px;
     }
+
     .badge-card.unlocked {
       border-color: rgba(245, 158, 11, 0.4);
       background: rgba(245, 158, 11, 0.05);
     }
-    .badge-card.locked { opacity: 0.55; filter: grayscale(1); }
-    .badge-icon { font-size: 1.7rem; }
-    .badge-info { flex: 1; }
-    .badge-title { font-size: 0.86rem; font-weight: 700; margin-bottom: 2px; }
-    .badge-desc { font-size: 0.72rem; color: var(--text-muted); }
-    .badge-status { font-size: 0.68rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
-    .status-unlocked { background: rgba(16, 185, 129, 0.2); color: #34D399; }
-    .status-locked { background: rgba(148, 163, 184, 0.2); color: #94A3B8; }
+
+    .badge-card.locked {
+      opacity: 0.55;
+      filter: grayscale(1);
+    }
+
+    .badge-icon {
+      font-size: 1.7rem;
+    }
+
+    .badge-info {
+      flex: 1;
+    }
+
+    .badge-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .badge-desc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .badge-status {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .status-unlocked {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34D399;
+    }
+
+    .status-locked {
+      background: rgba(148, 163, 184, 0.2);
+      color: #94A3B8;
+    }
 
     /* Floating Toast */
     #xpToast {
@@ -786,7 +966,11 @@
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       z-index: 120;
     }
-    #xpToast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    #xpToast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
 
     /* Modals */
     .modal-overlay {
@@ -803,7 +987,11 @@
       justify-content: center;
       padding: 16px;
     }
-    .modal-overlay.open { display: flex; }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
     .modal-content {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -813,8 +1001,9 @@
       max-height: 90vh;
       overflow-y: auto;
       padding: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
+
     .modal-title {
       font-size: 1.02rem;
       font-weight: 800;
@@ -823,8 +1012,19 @@
       justify-content: space-between;
       align-items: center;
     }
-    .form-group { margin-bottom: 10px; }
-    .form-label { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; display: block; }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .form-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      display: block;
+    }
+
     .form-input {
       width: 100%;
       background: var(--card-inner);
@@ -836,8 +1036,17 @@
       outline: none;
       user-select: text;
     }
-    .form-input:focus { border-color: var(--accent-blue); }
-    .modal-actions { display: flex; gap: 10px; margin-top: 16px; }
+
+    .form-input:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
     .btn {
       flex: 1;
       padding: 10px 12px;
@@ -851,9 +1060,22 @@
       justify-content: center;
       gap: 6px;
     }
-    .btn-primary { background: var(--accent-blue); color: #fff; }
-    .btn-secondary { background: var(--card-inner); color: var(--text); border: 1px solid var(--border); }
-    .btn-drive { background: var(--accent-green); color: #fff; }
+
+    .btn-primary {
+      background: var(--accent-blue);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: var(--card-inner);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-drive {
+      background: var(--accent-green);
+      color: #fff;
+    }
 
     /* Bottom Navigation Bar */
     nav.bottom-nav {
@@ -872,6 +1094,7 @@
       z-index: 50;
       padding-bottom: env(safe-area-inset-bottom);
     }
+
     .nav-item {
       display: flex;
       flex-direction: column;
@@ -883,8 +1106,14 @@
       cursor: pointer;
       padding: 6px 8px;
     }
-    .nav-item.active { color: var(--active-tab); }
-    .nav-icon { font-size: 1.25rem; }
+
+    .nav-item.active {
+      color: var(--active-tab);
+    }
+
+    .nav-icon {
+      font-size: 1.25rem;
+    }
 
     /* Directly Embedded Header Level Bar (No inner box/border) */
     .header-level-bar {
@@ -899,6 +1128,7 @@
       flex-direction: column;
       gap: 5px;
     }
+
     .hlb-top {
       display: flex;
       justify-content: space-between;
@@ -906,12 +1136,14 @@
       font-size: 0.74rem;
       font-weight: 800;
     }
+
     .hlb-lvl {
       color: var(--accent-gold);
       display: flex;
       align-items: center;
       gap: 4px;
     }
+
     .hlb-rank {
       color: var(--accent-blue);
       font-size: 0.66rem;
@@ -920,11 +1152,13 @@
       border-radius: 6px;
       white-space: nowrap;
     }
+
     .hlb-xp {
       color: var(--text-muted);
       font-size: 0.66rem;
       font-weight: 700;
     }
+
     .hlb-progress-bg {
       width: 100%;
       height: 6px;
@@ -932,6 +1166,7 @@
       border-radius: 999px;
       overflow: hidden;
     }
+
     .hlb-progress-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--accent-gold), var(--accent-green));
@@ -952,6 +1187,7 @@
       margin-right: 6px;
       white-space: nowrap;
     }
+
     .btn-habit-inline:active {
       transform: scale(0.94);
     }
@@ -963,6 +1199,7 @@
       margin-bottom: 3px;
       display: block;
     }
+
     .mini-stat-pts {
       font-size: 0.72rem;
       font-weight: 700;
@@ -980,11 +1217,13 @@
       flex-direction: column;
       gap: 9px;
     }
+
     .badge-top-row {
       display: flex;
       align-items: center;
       gap: 12px;
     }
+
     .badge-tier-pill {
       font-size: 0.66rem;
       font-weight: 800;
@@ -994,11 +1233,13 @@
       text-transform: uppercase;
       letter-spacing: 0.3px;
     }
+
     .badge-prog-row {
       display: flex;
       flex-direction: column;
       gap: 4px;
     }
+
     .badge-prog-labels {
       display: flex;
       justify-content: space-between;
@@ -1006,6 +1247,7 @@
       font-weight: 700;
       color: var(--text-muted);
     }
+
     .badge-prog-bg {
       width: 100%;
       height: 8px;
@@ -1014,11 +1256,13 @@
       overflow: hidden;
       border: 1px solid var(--border);
     }
+
     .badge-prog-fill {
       height: 100%;
       border-radius: 5px;
       transition: width 0.35s ease;
     }
+
     .tier-barchart {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
@@ -1027,12 +1271,14 @@
       padding-top: 6px;
       border-top: 1px dashed var(--border);
     }
+
     .tier-bar-col {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 3px;
     }
+
     .tier-bar-visual-wrap {
       width: 100%;
       height: 28px;
@@ -1043,10 +1289,12 @@
       align-items: flex-end;
       overflow: hidden;
     }
+
     .tier-bar-visual {
       width: 100%;
       transition: height 0.3s ease;
     }
+
     .tier-bar-lbl {
       font-size: 0.58rem;
       font-weight: 800;
@@ -1054,6 +1302,7 @@
       text-align: center;
       line-height: 1.1;
     }
+
     .tier-bar-col.reached .tier-bar-lbl {
       color: var(--text);
     }
@@ -1081,10 +1330,12 @@
       overflow: hidden;
       transition: all 0.2s ease;
     }
+
     .prog-exercise-item.open {
       border-color: var(--accent-blue);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     }
+
     .prog-exercise-row {
       padding: 11px 13px;
       display: flex;
@@ -1096,15 +1347,18 @@
       background: transparent;
       user-select: none;
     }
+
     .prog-exercise-row:active {
-      background: rgba(255,255,255,0.03);
+      background: rgba(255, 255, 255, 0.03);
     }
+
     .prog-ex-name-wrap {
       display: flex;
       align-items: center;
       gap: 6px;
       flex-wrap: wrap;
     }
+
     .video-has-badge {
       font-size: 0.62rem;
       font-weight: 800;
@@ -1117,6 +1371,7 @@
       align-items: center;
       gap: 3px;
     }
+
     .prog-ex-chevron {
       font-size: 0.72rem;
       color: var(--text-muted);
@@ -1124,10 +1379,12 @@
       display: inline-block;
       margin-left: 6px;
     }
+
     .prog-exercise-item.open .prog-ex-chevron {
       transform: rotate(180deg);
       color: var(--accent-blue);
     }
+
     .prog-video-panel {
       padding: 0 12px 14px 12px;
       border-top: 1px dashed var(--border);
@@ -1135,9 +1392,11 @@
       display: none;
       animation: fadeIn 0.2s ease-out;
     }
+
     .prog-exercise-item.open .prog-video-panel {
       display: block;
     }
+
     .video-iframe-wrap {
       position: relative;
       width: 100%;
@@ -1148,6 +1407,7 @@
       margin-top: 10px;
       border: 1px solid var(--border);
     }
+
     .video-iframe-wrap iframe {
       position: absolute;
       top: 0;
@@ -1156,6 +1416,7 @@
       height: 100%;
       border: none;
     }
+
     .video-meta-bar {
       display: flex;
       justify-content: space-between;
@@ -1165,6 +1426,7 @@
       flex-wrap: wrap;
       gap: 6px;
     }
+
     .video-time-tag {
       color: var(--accent-gold);
       font-weight: 700;
@@ -1173,19 +1435,20 @@
       border-radius: 6px;
       border: 1px solid rgba(245, 158, 11, 0.3);
     }
+
     .video-empty-box {
       text-align: center;
       padding: 16px 12px;
-      background: rgba(0,0,0,0.22);
+      background: rgba(0, 0, 0, 0.22);
       border-radius: 10px;
       margin-top: 10px;
       border: 1px dashed var(--border);
       font-size: 0.76rem;
       color: var(--text-muted);
     }
-
   </style>
 </head>
+
 <body data-theme="amoled">
 
   <div id="xpToast">+25 XP</div>
@@ -1198,7 +1461,8 @@
     </div>
 
     <!-- Directly Embedded Level & XP Bar (No 2nd Box) -->
-    <div class="header-level-bar" onclick="switchTab('dashboard', document.querySelectorAll('.nav-item')[3])" title="RPG & Rozet">
+    <div class="header-level-bar" onclick="switchTab('dashboard', document.querySelectorAll('.nav-item')[3])"
+      title="RPG & Rozet">
       <div class="hlb-top">
         <span class="hlb-lvl"><span id="avatarBox">🌱</span> <span id="heroLevel">Lv.1</span></span>
         <span class="hlb-rank" id="heroRank">Novice 🌱</span>
@@ -1226,7 +1490,9 @@
         <button class="date-btn" onclick="changeDate(-1)" title="Önceki Gün">◀</button>
         <div class="date-display" style="gap:8px">
           <span>📅</span> <span id="currentDateStr">16 Ekim 2026</span>
-          <button class="btn-header" id="btnJumpToday" onclick="jumpToToday()" style="display:none;padding:2px 8px;font-size:0.68rem;border-color:var(--accent-blue);color:var(--accent-blue)" data-i18n="btn_today">Bugün</button>
+          <button class="btn-header" id="btnJumpToday" onclick="jumpToToday()"
+            style="display:none;padding:2px 8px;font-size:0.68rem;border-color:var(--accent-blue);color:var(--accent-blue)"
+            data-i18n="btn_today">Bugün</button>
         </div>
         <button class="date-btn" id="btnDateNext" onclick="changeDate(1)" title="Sonraki Gün">▶</button>
       </div>
@@ -1236,7 +1502,8 @@
           <span data-i18n="daily_habits_title">GÜNLÜK ALIŞKANLIKLAR</span>
           <div style="display:flex;align-items:center;gap:6px">
             <span id="dailyProgressFraction" style="color:var(--accent-green);font-size:0.75rem">0/12 (%0)</span>
-            <button class="btn-header" onclick="openHabitModal(false)" style="padding:4px 8px;font-size:0.72rem" data-i18n="btn_add_habit">+ Alışkanlık</button>
+            <button class="btn-header" onclick="openHabitModal(false)" style="padding:4px 8px;font-size:0.72rem"
+              data-i18n="btn_add_habit">+ Alışkanlık</button>
           </div>
         </div>
         <div class="habit-list" id="habitListContainer"></div>
@@ -1257,7 +1524,8 @@
               <span id="sleepValueLabel">-</span>
             </div>
             <div class="wellness-control">
-              <input type="range" id="sleepSlider" min="4" max="11" step="0.5" value="7.5" oninput="updateSleep(this.value)">
+              <input type="range" id="sleepSlider" min="4" max="11" step="0.5" value="7.5"
+                oninput="updateSleep(this.value)">
             </div>
           </div>
         </div>
@@ -1272,15 +1540,19 @@
           <span style="font-size:0.68rem;color:var(--accent-blue)" data-i18n="lbl_info">REHBER</span>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:10px">
-          <select class="program-select" id="programSelector" style="margin-bottom:0;flex:1" onchange="renderSelectedProgram(true)"></select>
+          <select class="program-select" id="programSelector" style="margin-bottom:0;flex:1"
+            onchange="renderSelectedProgram(true)"></select>
           <div style="display:flex;gap:4px;flex:none">
-            <button class="btn-header" onclick="openProgramEditorModal(false)" title="Yeni Program Ekle" style="padding:8px 10px;font-size:0.76rem">
+            <button class="btn-header" onclick="openProgramEditorModal(false)" title="Yeni Program Ekle"
+              style="padding:8px 10px;font-size:0.76rem">
               <span>➕</span> <span data-i18n="btn_new_prog">Yeni</span>
             </button>
-            <button class="btn-header" onclick="openProgramEditorModal(true)" title="Seçili Programı Düzenle" style="padding:8px 10px;font-size:0.76rem">
+            <button class="btn-header" onclick="openProgramEditorModal(true)" title="Seçili Programı Düzenle"
+              style="padding:8px 10px;font-size:0.76rem">
               <span>✏️</span> <span data-i18n="btn_edit_prog">Düzenle</span>
             </button>
-            <button class="btn-header" onclick="deleteCurrentProgram()" title="Seçili Programı Sil" style="padding:8px 10px;font-size:0.76rem;color:var(--accent-red)">
+            <button class="btn-header" onclick="deleteCurrentProgram()" title="Seçili Programı Sil"
+              style="padding:8px 10px;font-size:0.76rem;color:var(--accent-red)">
               <span>🗑️</span>
             </button>
           </div>
@@ -1314,17 +1586,21 @@
           <span data-i18n="pomo_title">⏱️ POMODORO & DERİN ODAK (DEEP WORK)</span>
           <span id="pomoRoundBadge" style="color:var(--accent-gold);font-size:0.8rem">Tur: 1 / 5</span>
         </div>
-        <div style="background:var(--card-inner);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px">
+        <div
+          style="background:var(--card-inner);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <div>
-              <div style="font-size:0.72rem;color:var(--text-muted);font-weight:700" id="pomoPhaseLabel">ODAKLANMA PERİYODU (25 DK)</div>
-              <div style="font-size:1.85rem;font-weight:800;color:var(--text);letter-spacing:1px" id="pomodoroTimerDisplay">25:00</div>
+              <div style="font-size:0.72rem;color:var(--text-muted);font-weight:700" id="pomoPhaseLabel">ODAKLANMA
+                PERİYODU (25 DK)</div>
+              <div style="font-size:1.85rem;font-weight:800;color:var(--text);letter-spacing:1px"
+                id="pomodoroTimerDisplay">25:00</div>
               <div class="pomo-dots" id="pomoDotsContainer"></div>
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
               <div style="display:flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--text-muted)">
                 <span data-i18n="lbl_target_rounds">Hedef Tur:</span>
-                <select id="pomoTargetRoundsSelect" class="form-input" style="width:68px;padding:4px 6px;font-size:0.78rem" onchange="updatePomoTargetRounds(this.value)">
+                <select id="pomoTargetRoundsSelect" class="form-input"
+                  style="width:68px;padding:4px 6px;font-size:0.78rem" onchange="updatePomoTargetRounds(this.value)">
                   <option value="3">3</option>
                   <option value="4">4</option>
                   <option value="5" selected>5</option>
@@ -1345,7 +1621,8 @@
       <div class="card">
         <div class="card-title">
           <span data-i18n="routine_guide_title">🧠 GÜNLÜK HAYAT RUTİNLERİ & BİYORİTİM MİMARİSİ</span>
-          <button class="btn-header" onclick="openRoutineBlockModal(true)" style="padding:4px 9px;font-size:0.72rem" title="Seçili Rutin Başlığını Düzenle">
+          <button class="btn-header" onclick="openRoutineBlockModal(true)" style="padding:4px 9px;font-size:0.72rem"
+            title="Seçili Rutin Başlığını Düzenle">
             <span>✏️</span> <span data-i18n="btn_edit_routine_block">Başlığı Düzenle</span>
           </button>
         </div>
@@ -1452,7 +1729,8 @@
               GitHub Pages (HTTPS) üzerinden açıldığında tam ekran uygulama olarak ana ekrana eklenir.
             </div>
           </div>
-          <button class="btn btn-primary" style="flex:none;padding:8px 12px;font-size:0.75rem" onclick="promptPwaInstall()" id="btnPromptInstall">
+          <button class="btn btn-primary" style="flex:none;padding:8px 12px;font-size:0.75rem"
+            onclick="promptPwaInstall()" id="btnPromptInstall">
             <span>⬇️</span> <span data-i18n="btn_install_pwa">Yükle</span>
           </button>
         </div>
@@ -1500,7 +1778,8 @@
           <div style="display:flex;flex-direction:column;gap:12px;font-size:0.84rem">
             <div style="display:flex;justify-content:space-between;align-items:center">
               <span data-i18n="lbl_push_notif">🔔 Günlük Hatırlatıcı Bildirimleri</span>
-              <button class="btn-header" onclick="requestNotificationPermission()" id="notifPermBtn" data-i18n="btn_allow_notif">İzin Ver</button>
+              <button class="btn-header" onclick="requestNotificationPermission()" id="notifPermBtn"
+                data-i18n="btn_allow_notif">İzin Ver</button>
             </div>
             <label style="display:flex;justify-content:space-between;align-items:center">
               <span data-i18n="lbl_haptic">📳 Titreşim / Haptik Geri Bildirim</span>
@@ -1518,17 +1797,21 @@
             <span data-i18n="set_danger_title">🗑️ VERİ YÖNETİMİ VE SIFIRLAMA</span>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px">
-            <button class="btn btn-secondary" style="font-size:0.72rem;padding:8px 6px" onclick="restoreDefaultHabits()" data-i18n="btn_reset_habits">
+            <button class="btn btn-secondary" style="font-size:0.72rem;padding:8px 6px" onclick="restoreDefaultHabits()"
+              data-i18n="btn_reset_habits">
               🔄 Alışkanlıkları Sıfırla
             </button>
-            <button class="btn btn-secondary" style="font-size:0.72rem;padding:8px 6px" onclick="restoreDefaultPrograms()" data-i18n="btn_reset_programs">
+            <button class="btn btn-secondary" style="font-size:0.72rem;padding:8px 6px"
+              onclick="restoreDefaultPrograms()" data-i18n="btn_reset_programs">
               🔄 Programları Sıfırla
             </button>
-            <button class="btn btn-secondary" style="font-size:0.72rem;padding:8px 6px" onclick="restoreDefaultRoutines()" data-i18n="btn_reset_routines">
+            <button class="btn btn-secondary" style="font-size:0.72rem;padding:8px 6px"
+              onclick="restoreDefaultRoutines()" data-i18n="btn_reset_routines">
               🔄 Rutinleri Sıfırla
             </button>
           </div>
-          <button class="btn btn-secondary" style="width:100%;color:var(--accent-red);border-color:rgba(239,68,68,0.35)" onclick="resetAllDataToEmpty()">
+          <button class="btn btn-secondary" style="width:100%;color:var(--accent-red);border-color:rgba(239,68,68,0.35)"
+            onclick="resetAllDataToEmpty()">
             <span>🗑️</span> <span data-i18n="btn_reset_all">Tüm Verileri Sıfırla (Tamamen Boş Başlat)</span>
           </button>
         </div>
@@ -1544,68 +1827,78 @@
           </div>
           <div class="form-group">
             <label class="form-label" data-i18n="lbl_gdrive_url">Google Apps Script Web App URL</label>
-            <input type="url" class="form-input" id="autoSyncUrlInput" placeholder="https://script.google.com/macros/s/.../exec" oninput="saveSyncUrl(this.value)">
+            <input type="url" class="form-input" id="autoSyncUrlInput"
+              placeholder="https://script.google.com/macros/s/.../exec" oninput="saveSyncUrl(this.value)">
           </div>
           <div class="form-group">
-            <label class="form-label" data-i18n="lbl_gdrive_secret">🔒 Gizli Güvenlik Anahtarı (Secret Key / Parola)</label>
-            <input type="password" class="form-input" id="gdriveSecretInput" placeholder="Kendi belirlediğiniz gizli parola (ör. LifeOS_2026_Secret)" oninput="saveGdriveSecret(this.value)">
+            <label class="form-label" data-i18n="lbl_gdrive_secret">🔒 Gizli Güvenlik Anahtarı (Secret Key /
+              Parola)</label>
+            <input type="password" class="form-input" id="gdriveSecretInput"
+              placeholder="Kendi belirlediğiniz gizli parola (ör. LifeOS_2026_Secret)"
+              oninput="saveGdriveSecret(this.value)">
           </div>
           <div style="display:flex;gap:8px;margin-bottom:12px">
-            <button class="btn btn-primary" onclick="triggerGoogleSync(true)">🔄 <span data-i18n="btn_sync_push">Drive'a Kaydet</span></button>
-            <button class="btn btn-secondary" onclick="pullFromGoogleDrive()">📥 <span data-i18n="btn_sync_pull">Drive'dan Çek</span></button>
+            <button class="btn btn-primary" onclick="triggerGoogleSync(true)">🔄 <span data-i18n="btn_sync_push">Drive'a
+                Kaydet</span></button>
+            <button class="btn btn-secondary" onclick="pullFromGoogleDrive()">📥 <span
+                data-i18n="btn_sync_pull">Drive'dan Çek</span></button>
           </div>
 
           <!-- In-App Step-by-Step Google Drive Instructions -->
           <div class="routine-step" style="border-left-color:var(--accent-green)">
             <div class="routine-step-title">
               <span data-i18n="gdrive_how_title">📖 Google Drive Auto-Sync Nasıl Kurulur? (Adım Adım)</span>
-              <button class="btn-header" style="padding:3px 8px;font-size:0.68rem" onclick="copyAppsScriptCode()" data-i18n="btn_copy_code">📋 Kodu Kopyala</button>
+              <button class="btn-header" style="padding:3px 8px;font-size:0.68rem" onclick="copyAppsScriptCode()"
+                data-i18n="btn_copy_code">📋 Kodu Kopyala</button>
             </div>
             <div class="routine-step-desc" id="gdriveStepsText"></div>
             <div class="code-box" id="appsScriptCodeBlock">const FILE_NAME = "LifeOS_AutoSync_Data.json";
-const SECRET_KEY = "123456"; // Buraya belirlediğiniz gizli parolayı yazın
+              const SECRET_KEY = "123456"; // Buraya belirlediğiniz gizli parolayı yazın
 
-// Not: Üstteki "▷ Çalıştır (Run)" butonuna bastığınızda hata vermeden Drive iznini alır:
-function doPost(e) {
-  if (!e || !e.postData || !e.postData.contents) {
-    DriveApp.getFilesByName(FILE_NAME);
-    Logger.log("✅ Drive izni ve kurulum başarılı! Şimdi sağ üstten Dağıt > Yeni Dağıtım yapabilirsiniz.");
-    return ContentService.createTextOutput('{"status":"ready"}').setMimeType(ContentService.MimeType.JSON);
-  }
-  try {
-    var body = JSON.parse(e.postData.contents);
-    var clientKey = String(body._secretKey || "").trim();
-    if (SECRET_KEY && clientKey !== String(SECRET_KEY).trim()) {
-      return ContentService.createTextOutput('{"status":"error","error":"Unauthorized"}').setMimeType(ContentService.MimeType.JSON);
-    }
-    delete body._secretKey;
-    var c = JSON.stringify(body);
-    var f = DriveApp.getFilesByName(FILE_NAME);
-    if (f.hasNext()) f.next().setContent(c);
-    else DriveApp.createFile(FILE_NAME, c, MimeType.PLAIN_TEXT);
-    return ContentService.createTextOutput('{"status":"ok"}').setMimeType(ContentService.MimeType.JSON);
-  } catch (err) {
-    return ContentService.createTextOutput(JSON.stringify({status:"error", error: err.toString()})).setMimeType(ContentService.MimeType.JSON);
-  }
-}
+              // Not: Üstteki "▷ Çalıştır (Run)" butonuna bastığınızda hata vermeden Drive iznini alır:
+              function doPost(e) {
+              if (!e || !e.postData || !e.postData.contents) {
+              DriveApp.getFilesByName(FILE_NAME);
+              Logger.log("✅ Drive izni ve kurulum başarılı! Şimdi sağ üstten Dağıt > Yeni Dağıtım yapabilirsiniz.");
+              return ContentService.createTextOutput('{"status":"ready"}').setMimeType(ContentService.MimeType.JSON);
+              }
+              try {
+              var body = JSON.parse(e.postData.contents);
+              var clientKey = String(body._secretKey || "").trim();
+              if (SECRET_KEY && clientKey !== String(SECRET_KEY).trim()) {
+              return
+              ContentService.createTextOutput('{"status":"error","error":"Unauthorized"}').setMimeType(ContentService.MimeType.JSON);
+              }
+              delete body._secretKey;
+              var c = JSON.stringify(body);
+              var f = DriveApp.getFilesByName(FILE_NAME);
+              if (f.hasNext()) f.next().setContent(c);
+              else DriveApp.createFile(FILE_NAME, c, MimeType.PLAIN_TEXT);
+              return ContentService.createTextOutput('{"status":"ok"}').setMimeType(ContentService.MimeType.JSON);
+              } catch (err) {
+              return ContentService.createTextOutput(JSON.stringify({status:"error", error:
+              err.toString()})).setMimeType(ContentService.MimeType.JSON);
+              }
+              }
 
-function doGet(e) {
-  if (!e || !e.parameter) {
-    DriveApp.getFilesByName(FILE_NAME);
-    Logger.log("✅ Drive izni ve kurulum başarılı!");
-    return ContentService.createTextOutput('{"status":"ready"}').setMimeType(ContentService.MimeType.JSON);
-  }
-  var key = String(e.parameter.key || "").trim();
-  if (SECRET_KEY && key !== String(SECRET_KEY).trim()) {
-    return ContentService.createTextOutput('{"status":"error","error":"Unauthorized"}').setMimeType(ContentService.MimeType.JSON);
-  }
-  var f = DriveApp.getFilesByName(FILE_NAME);
-  if (!f.hasNext()) {
-    return ContentService.createTextOutput('{"status":"empty"}').setMimeType(ContentService.MimeType.JSON);
-  }
-  var out = f.next().getBlob().getDataAsString();
-  return ContentService.createTextOutput(out).setMimeType(ContentService.MimeType.JSON);
-}</div>
+              function doGet(e) {
+              if (!e || !e.parameter) {
+              DriveApp.getFilesByName(FILE_NAME);
+              Logger.log("✅ Drive izni ve kurulum başarılı!");
+              return ContentService.createTextOutput('{"status":"ready"}').setMimeType(ContentService.MimeType.JSON);
+              }
+              var key = String(e.parameter.key || "").trim();
+              if (SECRET_KEY && key !== String(SECRET_KEY).trim()) {
+              return
+              ContentService.createTextOutput('{"status":"error","error":"Unauthorized"}').setMimeType(ContentService.MimeType.JSON);
+              }
+              var f = DriveApp.getFilesByName(FILE_NAME);
+              if (!f.hasNext()) {
+              return ContentService.createTextOutput('{"status":"empty"}').setMimeType(ContentService.MimeType.JSON);
+              }
+              var out = f.next().getBlob().getDataAsString();
+              return ContentService.createTextOutput(out).setMimeType(ContentService.MimeType.JSON);
+              }</div>
           </div>
         </div>
 
@@ -1616,16 +1909,22 @@ function doGet(e) {
             <span style="font-size:0.7rem;color:var(--accent-purple)">REST API</span>
           </div>
           <div class="form-group">
-            <label class="form-label" data-i18n="lbl_gh_token">GitHub Personal Access Token (PAT - `gist` yetkili)</label>
-            <input type="password" class="form-input" id="githubTokenInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" oninput="saveGithubConfig()">
+            <label class="form-label" data-i18n="lbl_gh_token">GitHub Personal Access Token (PAT - `gist`
+              yetkili)</label>
+            <input type="password" class="form-input" id="githubTokenInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+              oninput="saveGithubConfig()">
           </div>
           <div class="form-group">
-            <label class="form-label" data-i18n="lbl_gh_gist_id">Gist ID (Boş bırakırsanız ilk kayıtta otomatik oluşturulur)</label>
-            <input type="text" class="form-input" id="githubGistIdInput" placeholder="Otomatik oluşturulur..." oninput="saveGithubConfig()">
+            <label class="form-label" data-i18n="lbl_gh_gist_id">Gist ID (Boş bırakırsanız ilk kayıtta otomatik
+              oluşturulur)</label>
+            <input type="text" class="form-input" id="githubGistIdInput" placeholder="Otomatik oluşturulur..."
+              oninput="saveGithubConfig()">
           </div>
           <div style="display:flex;gap:8px;margin-bottom:12px">
-            <button class="btn btn-primary" style="background:var(--accent-purple)" onclick="triggerGithubSync(true)">🔄 <span data-i18n="btn_gh_push">GitHub'a Kaydet</span></button>
-            <button class="btn btn-secondary" onclick="pullFromGithubGist()">📥 <span data-i18n="btn_gh_pull">GitHub'dan Çek</span></button>
+            <button class="btn btn-primary" style="background:var(--accent-purple)" onclick="triggerGithubSync(true)">🔄
+              <span data-i18n="btn_gh_push">GitHub'a Kaydet</span></button>
+            <button class="btn btn-secondary" onclick="pullFromGithubGist()">📥 <span data-i18n="btn_gh_pull">GitHub'dan
+                Çek</span></button>
           </div>
 
           <!-- In-App Step-by-Step GitHub Instructions -->
@@ -1648,7 +1947,8 @@ function doGet(e) {
             </button>
             <label class="btn btn-secondary" style="margin:0">
               <span>📂</span> <span data-i18n="btn_import_json">JSON Yükle</span>
-              <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="importBackup(event)">
+              <input type="file" id="importFileInput" accept=".json" style="display:none"
+                onchange="importBackup(event)">
             </label>
           </div>
         </div>
@@ -1665,18 +1965,23 @@ function doGet(e) {
         <button class="btn-header" onclick="closeModals()">✕</button>
       </div>
       <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:14px;line-height:1.4" data-i18n="qsave_desc">
-        Verilerinizi kaydetmek istediğiniz hedefi seçin. Eğer seçtiğiniz bulut servisinin kurulumu yapıldıysa anında kaydeder; yapılmadıysa kurulum sekmesine yönlendirir.
+        Verilerinizi kaydetmek istediğiniz hedefi seçin. Eğer seçtiğiniz bulut servisinin kurulumu yapıldıysa anında
+        kaydeder; yapılmadıysa kurulum sekmesine yönlendirir.
       </p>
       <div style="display:flex;flex-direction:column;gap:10px">
-        <button class="btn btn-primary" style="justify-content:space-between;padding:12px 14px" onclick="handleQuickSaveChoice('google')">
+        <button class="btn btn-primary" style="justify-content:space-between;padding:12px 14px"
+          onclick="handleQuickSaveChoice('google')">
           <span data-i18n="qsave_btn_gdrive">☁️ Google Drive Sync ile Kaydet</span>
           <span id="qsaveGoogleStatus" style="font-size:0.72rem;opacity:0.9">Kurulum Gerekli →</span>
         </button>
-        <button class="btn btn-primary" style="background:var(--accent-purple);justify-content:space-between;padding:12px 14px" onclick="handleQuickSaveChoice('github')">
+        <button class="btn btn-primary"
+          style="background:var(--accent-purple);justify-content:space-between;padding:12px 14px"
+          onclick="handleQuickSaveChoice('github')">
           <span data-i18n="qsave_btn_github">🐙 GitHub Gist Sync ile Kaydet</span>
           <span id="qsaveGithubStatus" style="font-size:0.72rem;opacity:0.9">Kurulum Gerekli →</span>
         </button>
-        <button class="btn btn-drive" style="justify-content:space-between;padding:12px 14px" onclick="handleQuickSaveChoice('export')">
+        <button class="btn btn-drive" style="justify-content:space-between;padding:12px 14px"
+          onclick="handleQuickSaveChoice('export')">
           <span data-i18n="qsave_btn_export">📥 Cihaza JSON Olarak İndir (Export)</span>
           <span style="font-size:0.72rem;opacity:0.9" data-i18n="qsave_lbl_dl">Dosya İndir</span>
         </button>
@@ -1712,7 +2017,9 @@ function doGet(e) {
       </div>
       <div class="modal-actions">
         <button class="btn btn-secondary" onclick="closeModals()" data-i18n="btn_cancel">İptal</button>
-        <button class="btn btn-secondary" id="btnDeletePrModal" style="display:none;color:var(--accent-red);border-color:rgba(239,68,68,0.3)" onclick="deletePrFromModal()" data-i18n="btn_delete">🗑️ Sil</button>
+        <button class="btn btn-secondary" id="btnDeletePrModal"
+          style="display:none;color:var(--accent-red);border-color:rgba(239,68,68,0.3)" onclick="deletePrFromModal()"
+          data-i18n="btn_delete">🗑️ Sil</button>
         <button class="btn btn-primary" onclick="saveNewPr()" data-i18n="btn_save">Kaydet</button>
       </div>
     </div>
@@ -1733,7 +2040,8 @@ function doGet(e) {
           <option value="navy" data-i18n="opt_bf_navy">⚓ 1. U.S. Navy Çevre Formülü (Boy, Boyun, Bel)</option>
           <option value="ymca" data-i18n="opt_bf_ymca">📐 2. YMCA Formülü (Kilo ve Bel Çevresi)</option>
           <option value="cunbae" data-i18n="opt_bf_cunbae">🧬 3. CUN-BAE Akademik Denklem (BMI, Yaş, Cinsiyet)</option>
-          <option value="deurenberg" data-i18n="opt_bf_deurenberg">⚖️ 4. Deurenberg BMI Formülü (BMI, Yaş, Cinsiyet)</option>
+          <option value="deurenberg" data-i18n="opt_bf_deurenberg">⚖️ 4. Deurenberg BMI Formülü (BMI, Yaş, Cinsiyet)
+          </option>
           <option value="manual" data-i18n="opt_bf_manual">✍️ Manuel Giriş (Ölçüm Cihazı / Kaliper Değeri)</option>
         </select>
       </div>
@@ -1741,14 +2049,16 @@ function doGet(e) {
       <!-- Manual Body Fat Input (Shown when 'manual' is selected, or optional override) -->
       <div class="form-group" id="manualBfGroup" style="display:none">
         <label class="form-label" data-i18n="lbl_manual_bf">✍️ Manuel Yağ Oranı (%)</label>
-        <input type="number" step="0.1" class="form-input" id="mManualBf" placeholder="16.5" oninput="previewBodyFatCalc()">
+        <input type="number" step="0.1" class="form-input" id="mManualBf" placeholder="16.5"
+          oninput="previewBodyFatCalc()">
       </div>
 
       <!-- Core Anthropometric Inputs -->
       <div class="form-group" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
         <div>
           <label class="form-label" data-i18n="lbl_m_weight">Kilo (kg)*</label>
-          <input type="number" step="0.1" class="form-input" id="mWeight" placeholder="85.0" oninput="previewBodyFatCalc()">
+          <input type="number" step="0.1" class="form-input" id="mWeight" placeholder="85.0"
+            oninput="previewBodyFatCalc()">
         </div>
         <div>
           <label class="form-label" data-i18n="lbl_m_height">Boy (cm)*</label>
@@ -1757,7 +2067,8 @@ function doGet(e) {
         <div>
           <label class="form-label" data-i18n="lbl_m_age_sex">Yaş / Cinsiyet</label>
           <div style="display:flex;gap:4px">
-            <input type="number" class="form-input" id="mAge" value="26" style="width:55%;padding:9px 6px" oninput="previewBodyFatCalc()">
+            <input type="number" class="form-input" id="mAge" value="26" style="width:55%;padding:9px 6px"
+              oninput="previewBodyFatCalc()">
             <select class="form-input" id="mGender" style="width:45%;padding:9px 4px" onchange="previewBodyFatCalc()">
               <option value="m" data-i18n="opt_sex_m">E</option>
               <option value="f" data-i18n="opt_sex_f">K</option>
@@ -1769,15 +2080,18 @@ function doGet(e) {
       <div class="form-group" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
         <div>
           <label class="form-label" data-i18n="lbl_m_waist">Bel (cm)*</label>
-          <input type="number" step="0.5" class="form-input" id="mWaist" placeholder="92.0" oninput="previewBodyFatCalc()">
+          <input type="number" step="0.5" class="form-input" id="mWaist" placeholder="92.0"
+            oninput="previewBodyFatCalc()">
         </div>
         <div>
           <label class="form-label" data-i18n="lbl_m_neck">Boyun (cm)*</label>
-          <input type="number" step="0.5" class="form-input" id="mNeck" placeholder="39.0" oninput="previewBodyFatCalc()">
+          <input type="number" step="0.5" class="form-input" id="mNeck" placeholder="39.0"
+            oninput="previewBodyFatCalc()">
         </div>
         <div>
           <label class="form-label" data-i18n="lbl_m_hips">Kalça (cm)</label>
-          <input type="number" step="0.5" class="form-input" id="mHips" placeholder="105" oninput="previewBodyFatCalc()">
+          <input type="number" step="0.5" class="form-input" id="mHips" placeholder="105"
+            oninput="previewBodyFatCalc()">
         </div>
       </div>
 
@@ -1801,7 +2115,8 @@ function doGet(e) {
       </div>
 
       <!-- Live Calculation Preview Box -->
-      <div style="background:var(--card-inner);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-top:6px;font-size:0.78rem;display:flex;justify-content:space-between;align-items:center">
+      <div
+        style="background:var(--card-inner);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-top:6px;font-size:0.78rem;display:flex;justify-content:space-between;align-items:center">
         <span style="color:var(--text-muted)" data-i18n="lbl_calc_preview">Hesaplanan Sonuç:</span>
         <strong id="bfLivePreviewText" style="color:var(--accent-gold)">Yağ: - % | LBM: - kg</strong>
       </div>
@@ -1809,7 +2124,9 @@ function doGet(e) {
       <input type="hidden" id="measureEditId" value="">
       <div class="modal-actions">
         <button class="btn btn-secondary" onclick="closeModals()" data-i18n="btn_cancel">İptal</button>
-        <button class="btn btn-secondary" id="btnDeleteMeasureModal" style="display:none;color:var(--accent-red);border-color:rgba(239,68,68,0.3)" onclick="deleteMeasureFromModal()" data-i18n="btn_delete">🗑️ Sil</button>
+        <button class="btn btn-secondary" id="btnDeleteMeasureModal"
+          style="display:none;color:var(--accent-red);border-color:rgba(239,68,68,0.3)"
+          onclick="deleteMeasureFromModal()" data-i18n="btn_delete">🗑️ Sil</button>
         <button class="btn btn-primary" onclick="saveNewMeasure()" data-i18n="btn_save">Kaydet</button>
       </div>
     </div>
@@ -1843,7 +2160,8 @@ function doGet(e) {
       </div>
       <div class="form-group">
         <label class="form-label" data-i18n="lbl_book_summary">📝 Kitap Özeti / Notlar (İsteğe Bağlı)</label>
-        <textarea class="form-input" id="bookSummaryInput" rows="3" placeholder="Boş bırakırsanız otomatik olarak kaç sayfalı olduğu, ne zaman başlanıp kaç günde bittiği yazılır."></textarea>
+        <textarea class="form-input" id="bookSummaryInput" rows="3"
+          placeholder="Boş bırakırsanız otomatik olarak kaç sayfalı olduğu, ne zaman başlanıp kaç günde bittiği yazılır."></textarea>
       </div>
       <div class="modal-actions">
         <button class="btn btn-secondary" onclick="closeModals()" data-i18n="btn_cancel">İptal</button>
@@ -1860,7 +2178,7 @@ function doGet(e) {
         <span id="modalVideoExerciseTitle">✏️ Hareketi ve Videoyu Düzenle</span>
         <button class="btn-header" onclick="closeModals()">✕</button>
       </div>
-      
+
       <input type="hidden" id="videoModalExName">
       <input type="hidden" id="videoModalExIdx">
 
@@ -1878,16 +2196,22 @@ function doGet(e) {
 
       <!-- Exercise Sub Description / Form Notes + Bilingual Sync & Free Translator -->
       <div class="form-group">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:4px">
+        <div
+          style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:4px">
           <label class="form-label" style="margin-bottom:0" data-i18n="lbl_ex_sub">Açıklama / Form Notu</label>
           <div style="display:flex;align-items:center;gap:6px">
-            <button type="button" class="btn-header" style="padding:2px 8px;font-size:0.66rem;border-color:var(--accent-blue);color:var(--accent-blue)" onclick="translateFieldInPlace('videoModalExSubInput')" title="Yazılan açıklamayı aktif dile veya diğer dile çevir">
+            <button type="button" class="btn-header"
+              style="padding:2px 8px;font-size:0.66rem;border-color:var(--accent-blue);color:var(--accent-blue)"
+              onclick="translateFieldInPlace('videoModalExSubInput')"
+              title="Yazılan açıklamayı aktif dile veya diğer dile çevir">
               🌐 <span data-i18n="btn_translate_field">Bu Dile Çevir</span>
             </button>
           </div>
         </div>
-        <textarea class="form-input" id="videoModalExSubInput" rows="2" placeholder="Hareketin formu, hedef kas veya dikkat edilecek püf noktalar..."></textarea>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;flex-wrap:wrap;gap:6px;font-size:0.7rem;color:var(--text-muted)">
+        <textarea class="form-input" id="videoModalExSubInput" rows="2"
+          placeholder="Hareketin formu, hedef kas veya dikkat edilecek püf noktalar..."></textarea>
+        <div
+          style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;flex-wrap:wrap;gap:6px;font-size:0.7rem;color:var(--text-muted)">
           <label style="display:flex;align-items:center;gap:5px;cursor:pointer">
             <input type="checkbox" id="videoModalKeepSameCheck">
             <span data-i18n="lbl_keep_same_lang">İngilizce / Türkçe açıklamayı birebir aynı tut</span>
@@ -1900,18 +2224,23 @@ function doGet(e) {
       </div>
 
       <!-- YouTube Video Embed Settings -->
-      <div style="background:var(--card-inner);border:1px solid var(--border);border-radius:10px;padding:10px;margin-top:8px">
-        <div style="font-size:0.72rem;font-weight:800;color:var(--accent-gold);margin-bottom:6px" data-i18n="lbl_yt_video">🎬 YouTube Video Bağlantısı (İsteğe bağlı)</div>
+      <div
+        style="background:var(--card-inner);border:1px solid var(--border);border-radius:10px;padding:10px;margin-top:8px">
+        <div style="font-size:0.72rem;font-weight:800;color:var(--accent-gold);margin-bottom:6px"
+          data-i18n="lbl_yt_video">🎬 YouTube Video Bağlantısı (İsteğe bağlı)</div>
         <div class="form-group" style="margin-bottom:6px">
-          <input type="text" class="form-input" id="videoModalUrlInput" placeholder="https://www.youtube.com/watch?v=... veya Video ID">
+          <input type="text" class="form-input" id="videoModalUrlInput"
+            placeholder="https://www.youtube.com/watch?v=... veya Video ID">
         </div>
         <div class="form-group" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:0">
           <div>
-            <label class="form-label" style="font-size:0.68rem" data-i18n="lbl_yt_start">⏱️ Başlangıç (ör. 01:00 veya 60)</label>
+            <label class="form-label" style="font-size:0.68rem" data-i18n="lbl_yt_start">⏱️ Başlangıç (ör. 01:00 veya
+              60)</label>
             <input type="text" class="form-input" id="videoModalStartInput" placeholder="00:00">
           </div>
           <div>
-            <label class="form-label" style="font-size:0.68rem" data-i18n="lbl_yt_end">⏱️ Bitiş (ör. 01:35 veya 95)</label>
+            <label class="form-label" style="font-size:0.68rem" data-i18n="lbl_yt_end">⏱️ Bitiş (ör. 01:35 veya
+              95)</label>
             <input type="text" class="form-input" id="videoModalEndInput" placeholder="İsteğe bağlı">
           </div>
         </div>
@@ -1919,7 +2248,8 @@ function doGet(e) {
 
       <div class="modal-actions" style="margin-top:14px">
         <button class="btn btn-secondary" onclick="closeModals()" data-i18n="btn_cancel">İptal</button>
-        <button class="btn btn-secondary" style="color:var(--accent-red);border-color:rgba(239,68,68,0.3)" onclick="deleteExerciseVideoFromModal()" data-i18n="btn_del_video">🗑️ Videoyu Sil</button>
+        <button class="btn btn-secondary" style="color:var(--accent-red);border-color:rgba(239,68,68,0.3)"
+          onclick="deleteExerciseVideoFromModal()" data-i18n="btn_del_video">🗑️ Videoyu Sil</button>
         <button class="btn btn-primary" onclick="saveExerciseVideoFromModal()" data-i18n="btn_save">💾 Kaydet</button>
       </div>
     </div>
@@ -1938,32 +2268,46 @@ function doGet(e) {
       <div class="form-group">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
           <label class="form-label" style="margin-bottom:0" data-i18n="lbl_prog_title">İkon ve Program Başlığı*</label>
-          <span style="font-size:0.65rem;color:var(--text-muted)" data-i18n="ph_custom_icon">İstediğiniz emojiyi yazın veya seçin</span>
+          <span style="font-size:0.65rem;color:var(--text-muted)" data-i18n="ph_custom_icon">İstediğiniz emojiyi yazın
+            veya seçin</span>
         </div>
         <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
-          <input type="text" class="form-input" id="peIconInput" value="💪" maxlength="6" style="width:54px;height:42px;font-size:1.35rem;text-align:center;padding:4px;flex:none;cursor:text" title="Dilediğiniz emojiyi yazın veya seçin / Type or select any emoji" oninput="onPeIconInputChange(this.value)">
-          <input type="text" class="form-input" id="peProgTitle" placeholder="ör. 4 Günlük Upper / Lower Hipertrofi" style="flex:1" oninput="onPeTitleInputChange(this.value)">
+          <input type="text" class="form-input" id="peIconInput" value="💪" maxlength="6"
+            style="width:54px;height:42px;font-size:1.35rem;text-align:center;padding:4px;flex:none;cursor:text"
+            title="Dilediğiniz emojiyi yazın veya seçin / Type or select any emoji"
+            oninput="onPeIconInputChange(this.value)">
+          <input type="text" class="form-input" id="peProgTitle" placeholder="ör. 4 Günlük Upper / Lower Hipertrofi"
+            style="flex:1" oninput="onPeTitleInputChange(this.value)">
         </div>
 
         <!-- Quick Select Emoji Icon Palette -->
-        <div style="background:var(--card-inner);border:1px solid var(--border);border-radius:10px;padding:8px 10px;margin-bottom:8px">
-          <div style="font-size:0.68rem;font-weight:700;color:var(--text-muted);margin-bottom:6px" data-i18n="lbl_choose_icon">İkon Seçin:</div>
-          <div id="peIconPaletteContainer" style="display:flex;gap:6px;flex-wrap:wrap;max-height:95px;overflow-y:auto"></div>
+        <div
+          style="background:var(--card-inner);border:1px solid var(--border);border-radius:10px;padding:8px 10px;margin-bottom:8px">
+          <div style="font-size:0.68rem;font-weight:700;color:var(--text-muted);margin-bottom:6px"
+            data-i18n="lbl_choose_icon">İkon Seçin:</div>
+          <div id="peIconPaletteContainer" style="display:flex;gap:6px;flex-wrap:wrap;max-height:95px;overflow-y:auto">
+          </div>
         </div>
       </div>
 
       <!-- 3 Fixed Explanation Fields + Bilingual Controls -->
-      <div style="background:var(--card-inner);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:12px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px">
-          <div style="font-size:0.75rem;font-weight:800;color:var(--accent-gold);text-transform:uppercase" data-i18n="lbl_3_fixed_desc">
+      <div
+        style="background:var(--card-inner);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:12px">
+        <div
+          style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px">
+          <div style="font-size:0.75rem;font-weight:800;color:var(--accent-gold);text-transform:uppercase"
+            data-i18n="lbl_3_fixed_desc">
             📖 3 Sabit Açıklama Alanı (İsteğe bağlı)
           </div>
-          <button type="button" class="btn-header" style="padding:3px 8px;font-size:0.66rem;border-color:var(--accent-blue);color:var(--accent-blue)" onclick="peTranslateAll3SectionsInPlace()">
+          <button type="button" class="btn-header"
+            style="padding:3px 8px;font-size:0.66rem;border-color:var(--accent-blue);color:var(--accent-blue)"
+            onclick="peTranslateAll3SectionsInPlace()">
             🌐 <span data-i18n="btn_translate_3_secs">3 Alanı Bu Dile Çevir</span>
           </button>
         </div>
 
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding:6px 8px;background:var(--card-bg);border-radius:8px;border:1px solid var(--border);flex-wrap:wrap;gap:6px;font-size:0.69rem;color:var(--text-muted)">
+        <div
+          style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding:6px 8px;background:var(--card-bg);border-radius:8px;border:1px solid var(--border);flex-wrap:wrap;gap:6px;font-size:0.69rem;color:var(--text-muted)">
           <label style="display:flex;align-items:center;gap:5px;cursor:pointer">
             <input type="checkbox" id="peKeepSameLangCheck">
             <span data-i18n="lbl_keep_same_lang">İngilizce / Türkçe açıklamayı birebir aynı tut</span>
@@ -1973,39 +2317,54 @@ function doGet(e) {
             <span data-i18n="lbl_auto_translate_other">Kaydederken diğer dile otomatik çevir</span>
           </label>
         </div>
-        
+
         <div class="form-group">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
-            <label class="form-label" style="color:var(--accent-gold);margin-bottom:0" data-i18n="lbl_sec_purpose">🎯 1. Programın Amacı ve Hedef Alanı</label>
-            <button type="button" class="btn-header" style="padding:1px 6px;font-size:0.62rem" onclick="translateFieldInPlace('peSecPurpose')">🌐 <span data-i18n="btn_translate_short">Çevir</span></button>
+            <label class="form-label" style="color:var(--accent-gold);margin-bottom:0" data-i18n="lbl_sec_purpose">🎯 1.
+              Programın Amacı ve Hedef Alanı</label>
+            <button type="button" class="btn-header" style="padding:1px 6px;font-size:0.62rem"
+              onclick="translateFieldInPlace('peSecPurpose')">🌐 <span
+                data-i18n="btn_translate_short">Çevir</span></button>
           </div>
-          <textarea class="form-input" id="peSecPurpose" rows="3" placeholder="Programın amacı, hedef kas grupları ve kimler için olduğu..."></textarea>
+          <textarea class="form-input" id="peSecPurpose" rows="3"
+            placeholder="Programın amacı, hedef kas grupları ve kimler için olduğu..."></textarea>
         </div>
 
         <div class="form-group">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
-            <label class="form-label" style="color:var(--accent-gold);margin-bottom:0" data-i18n="lbl_sec_method">⚙️ 2. Uygulama Metodolojisi ve Biyomekanik Odak</label>
-            <button type="button" class="btn-header" style="padding:1px 6px;font-size:0.62rem" onclick="translateFieldInPlace('peSecMethod')">🌐 <span data-i18n="btn_translate_short">Çevir</span></button>
+            <label class="form-label" style="color:var(--accent-gold);margin-bottom:0" data-i18n="lbl_sec_method">⚙️ 2.
+              Uygulama Metodolojisi ve Biyomekanik Odak</label>
+            <button type="button" class="btn-header" style="padding:1px 6px;font-size:0.62rem"
+              onclick="translateFieldInPlace('peSecMethod')">🌐 <span
+                data-i18n="btn_translate_short">Çevir</span></button>
           </div>
-          <textarea class="form-input" id="peSecMethod" rows="3" placeholder="Set araları dinlenme, hareket temposu, form ve tükeniş kuralları..."></textarea>
+          <textarea class="form-input" id="peSecMethod" rows="3"
+            placeholder="Set araları dinlenme, hareket temposu, form ve tükeniş kuralları..."></textarea>
         </div>
 
         <div class="form-group" style="margin-bottom:0">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
-            <label class="form-label" style="color:var(--accent-gold);margin-bottom:0" data-i18n="lbl_sec_progress">📈 3. İlerleme ve Yük Artışı (Progression) Protokolü</label>
-            <button type="button" class="btn-header" style="padding:1px 6px;font-size:0.62rem" onclick="translateFieldInPlace('peSecProgress')">🌐 <span data-i18n="btn_translate_short">Çevir</span></button>
+            <label class="form-label" style="color:var(--accent-gold);margin-bottom:0" data-i18n="lbl_sec_progress">📈
+              3. İlerleme ve Yük Artışı (Progression) Protokolü</label>
+            <button type="button" class="btn-header" style="padding:1px 6px;font-size:0.62rem"
+              onclick="translateFieldInPlace('peSecProgress')">🌐 <span
+                data-i18n="btn_translate_short">Çevir</span></button>
           </div>
-          <textarea class="form-input" id="peSecProgress" rows="3" placeholder="Ağırlık artırma mantığı (ör. Double Progression, +2.5 kg), deload döngüsü..."></textarea>
+          <textarea class="form-input" id="peSecProgress" rows="3"
+            placeholder="Ağırlık artırma mantığı (ör. Double Progression, +2.5 kg), deload döngüsü..."></textarea>
         </div>
       </div>
 
       <!-- Days & Exercises Manager -->
-      <div style="background:var(--card-inner);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:12px">
+      <div
+        style="background:var(--card-inner);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:12px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-          <div style="font-size:0.75rem;font-weight:800;color:var(--accent-blue);text-transform:uppercase" data-i18n="lbl_days_exercises">
+          <div style="font-size:0.75rem;font-weight:800;color:var(--accent-blue);text-transform:uppercase"
+            data-i18n="lbl_days_exercises">
             🏋️ Program Günleri ve Egzersizler
           </div>
-          <button class="btn-header" style="padding:3px 8px;font-size:0.68rem" onclick="peAddNewDay()" data-i18n="btn_add_day">+ Gün Ekle</button>
+          <button class="btn-header" style="padding:3px 8px;font-size:0.68rem" onclick="peAddNewDay()"
+            data-i18n="btn_add_day">+ Gün Ekle</button>
         </div>
 
         <!-- Day Selector Pills -->
@@ -2013,21 +2372,30 @@ function doGet(e) {
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
           <span style="font-size:0.72rem;color:var(--text-muted)" id="peCurrentDayLabel">Seçili Gün: 1. Gün</span>
           <div style="display:flex;gap:4px">
-            <button class="btn-header" style="padding:2px 7px;font-size:0.65rem" onclick="peRenameCurrentDay()" data-i18n="btn_rename_day">✏️ Günü Adlandır</button>
-            <button class="btn-header" style="padding:2px 7px;font-size:0.65rem;color:var(--accent-red)" onclick="peDeleteCurrentDay()" data-i18n="btn_del_day">🗑️ Günü Sil</button>
+            <button class="btn-header" style="padding:2px 7px;font-size:0.65rem" onclick="peRenameCurrentDay()"
+              data-i18n="btn_rename_day">✏️ Günü Adlandır</button>
+            <button class="btn-header" style="padding:2px 7px;font-size:0.65rem;color:var(--accent-red)"
+              onclick="peDeleteCurrentDay()" data-i18n="btn_del_day">🗑️ Günü Sil</button>
           </div>
         </div>
 
         <!-- Exercise List for Selected Day -->
-        <div id="peExerciseListContainer" style="display:flex;flex-direction:column;gap:6px;max-height:220px;overflow-y:auto;margin-bottom:10px"></div>
+        <div id="peExerciseListContainer"
+          style="display:flex;flex-direction:column;gap:6px;max-height:220px;overflow-y:auto;margin-bottom:10px"></div>
 
         <!-- Inline Add / Edit Exercise Box -->
-        <div style="background:var(--card-bg);border:1px dashed var(--border);border-radius:10px;padding:10px" id="peExFormWrapper">
+        <div style="background:var(--card-bg);border:1px dashed var(--border);border-radius:10px;padding:10px"
+          id="peExFormWrapper">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-            <div style="font-size:0.7rem;font-weight:800;color:var(--text)" id="peExFormTitle" data-i18n="lbl_add_ex_title">➕ Bu Güne Yeni Hareket Ekle:</div>
+            <div style="font-size:0.7rem;font-weight:800;color:var(--text)" id="peExFormTitle"
+              data-i18n="lbl_add_ex_title">➕ Bu Güne Yeni Hareket Ekle:</div>
             <div style="display:flex;gap:4px;align-items:center">
-              <button type="button" class="btn-header" style="padding:2px 6px;font-size:0.64rem;border-color:var(--accent-blue);color:var(--accent-blue)" onclick="translateFieldInPlace('peNewExSub')">🌐 <span data-i18n="btn_translate_short">Çevir</span></button>
-              <button type="button" class="btn-header" style="display:none;padding:2px 6px;font-size:0.65rem" id="peBtnCancelEditEx" onclick="peCancelEditExercise()" data-i18n="btn_cancel">İptal</button>
+              <button type="button" class="btn-header"
+                style="padding:2px 6px;font-size:0.64rem;border-color:var(--accent-blue);color:var(--accent-blue)"
+                onclick="translateFieldInPlace('peNewExSub')">🌐 <span
+                  data-i18n="btn_translate_short">Çevir</span></button>
+              <button type="button" class="btn-header" style="display:none;padding:2px 6px;font-size:0.65rem"
+                id="peBtnCancelEditEx" onclick="peCancelEditExercise()" data-i18n="btn_cancel">İptal</button>
             </div>
           </div>
           <div style="display:grid;grid-template-columns:2fr 1fr;gap:6px;margin-bottom:6px">
@@ -2035,8 +2403,10 @@ function doGet(e) {
             <input type="text" class="form-input" id="peNewExSets" placeholder="Set (ör. 3×10–12)">
           </div>
           <div style="display:flex;gap:6px">
-            <input type="text" class="form-input" id="peNewExSub" placeholder="Form notu / Açıklama (ör. Omuzlar geride, göğse çekiş)" style="flex:1">
-            <button class="btn btn-primary" style="flex:none;padding:6px 14px;font-size:0.75rem" id="peBtnSaveEx" onclick="peAddOrUpdateExercise()">+ Ekle</button>
+            <input type="text" class="form-input" id="peNewExSub"
+              placeholder="Form notu / Açıklama (ör. Omuzlar geride, göğse çekiş)" style="flex:1">
+            <button class="btn btn-primary" style="flex:none;padding:6px 14px;font-size:0.75rem" id="peBtnSaveEx"
+              onclick="peAddOrUpdateExercise()">+ Ekle</button>
           </div>
         </div>
       </div>
@@ -2044,7 +2414,8 @@ function doGet(e) {
       <!-- Action Buttons -->
       <div class="modal-actions">
         <button class="btn btn-secondary" onclick="closeModals()" data-i18n="btn_cancel">İptal</button>
-        <button class="btn btn-primary" onclick="saveProgramFromEditor()" data-i18n="btn_save_prog">💾 Programı Kaydet</button>
+        <button class="btn btn-primary" onclick="saveProgramFromEditor()" data-i18n="btn_save_prog">💾 Programı
+          Kaydet</button>
       </div>
     </div>
   </div>
@@ -2085,7 +2456,8 @@ function doGet(e) {
       </div>
       <div class="modal-actions" style="margin-top:14px">
         <button class="btn btn-secondary" onclick="closeModals()" data-i18n="btn_cancel">İptal</button>
-        <button class="btn btn-secondary" style="color:var(--accent-red);border-color:rgba(239,68,68,0.3);display:none" id="btnDeleteHabit" onclick="deleteHabitFromModal()" data-i18n="btn_delete">🗑️ Sil</button>
+        <button class="btn btn-secondary" style="color:var(--accent-red);border-color:rgba(239,68,68,0.3);display:none"
+          id="btnDeleteHabit" onclick="deleteHabitFromModal()" data-i18n="btn_delete">🗑️ Sil</button>
         <button class="btn btn-primary" onclick="saveHabitFromModal()" data-i18n="btn_save">💾 Kaydet</button>
       </div>
     </div>
@@ -2128,11 +2500,14 @@ function doGet(e) {
       </div>
       <div class="form-group">
         <label class="form-label" data-i18n="lbl_rstep_desc">Uygulama Açıklaması / Yönerge*</label>
-        <textarea class="form-input" id="rstepModalDesc" rows="3" placeholder="Bu adımda ne yapılması gerektiği, biyolojik veya zihinsel gerekçesi..."></textarea>
+        <textarea class="form-input" id="rstepModalDesc" rows="3"
+          placeholder="Bu adımda ne yapılması gerektiği, biyolojik veya zihinsel gerekçesi..."></textarea>
       </div>
       <div class="modal-actions" style="margin-top:14px">
         <button class="btn btn-secondary" onclick="closeModals()" data-i18n="btn_cancel">İptal</button>
-        <button class="btn btn-secondary" style="color:var(--accent-red);border-color:rgba(239,68,68,0.3);display:none" id="btnDeleteRoutineStep" onclick="deleteCurrentRoutineStepFromModal()" data-i18n="btn_delete">🗑️ Sil</button>
+        <button class="btn btn-secondary" style="color:var(--accent-red);border-color:rgba(239,68,68,0.3);display:none"
+          id="btnDeleteRoutineStep" onclick="deleteCurrentRoutineStepFromModal()" data-i18n="btn_delete">🗑️
+          Sil</button>
         <button class="btn btn-primary" onclick="saveRoutineStepFromModal()" data-i18n="btn_save">💾 Kaydet</button>
       </div>
     </div>
@@ -2533,7 +2908,7 @@ function doGet(e) {
     ];
 
     // Fully Bilingual Workout & Posture Programs (Domain-specific 3-section explanations, 3-4 sentences per section, NO newbie/advanced labels!)
-    
+
     function getWorkoutPrograms() {
       if (!appData.programs || Object.keys(appData.programs).length === 0) {
         appData.programs = JSON.parse(JSON.stringify(DEFAULT_WORKOUT_PROGRAMS));
@@ -2613,9 +2988,9 @@ function doGet(e) {
           0: [
             { name: "Goblet Squat / Leg Press", sets: "3×10–12", sub: "Ön Bacak & Kalça • Dik gövde, tam derinlik kontrolü", videoId: "MeIiIdhvXT4", start: "00:20", end: "00:55" },
             { name: "DB Bench Press / Chest Press", sets: "3×10–12", sub: "Göğüs & Ön Omuz • Kürek kemikleri geride sabit", videoId: "VmB1G1K7v94", start: "00:15", end: "00:50" },
+            { name: "Seated DB Shoulder Press", sets: "3×10–12", sub: "Omuz (Deltoid) • Bel boşluğunu sehpaya yaslayarak itiş", videoId: "qEwKCR5JCog", start: "00:15", end: "00:50" },
             { name: "Lat Pulldown", sets: "3×10–12", sub: "Sırt Genişliği (Lat) • Omuzları bastırarak üst göğse çekiş", videoId: "CAwf7n6Luuc", start: "00:15", end: "00:50" },
             { name: "Romanian Deadlift (DB / Bar)", sets: "3×10–12", sub: "Arka Bacak (Hamstring) & Kalça • Kalça menteşesi", videoId: "JCXUYuzwNrM", start: "00:25", end: "01:05" },
-            { name: "Seated DB Shoulder Press", sets: "3×10–12", sub: "Omuz (Deltoid) • Bel boşluğunu sehpaya yaslayarak itiş", videoId: "qEwKCR5JCog", start: "00:15", end: "00:50" },
             { name: "DB Bicep Curl + Rope Pushdown", sets: "2×12–15", sub: "Kol Süperseti (Biceps & Triceps) • Dirsekler sabit", videoId: "ykJmrZ5v0Oo", start: "00:15", end: "00:50" },
             { name: "Forearm Plank", sets: "3×30–45 sn", sub: "Core • Karın ve kalça sıkı, omurga düz", videoId: "pSHjTRCQxIw", start: "00:15", end: "00:45" }
           ],
@@ -2629,9 +3004,9 @@ function doGet(e) {
             { name: "Dead Bug / Abdominal Crunch", sets: "3×12/taraf", sub: "Derin Core • Beli yere tam bastırarak kontrollü", videoId: "g_BYB0R-4Ws", start: "00:15", end: "00:50" }
           ],
           2: [
-            { name: "Leg Press / Leg Extension", sets: "3×12", sub: "Quadriceps Odaklı Bacak • Tam diz fleksiyonu", videoId: "IZxyjW7MPJQ", start: "00:20", end: "00:55" },
+            { name: "Leg Extension", sets: "3×12", sub: "Quadriceps Odaklı Bacak • Tam diz fleksiyonu", videoId: "4ZDm5EbiFI8", start: "00:00", end: "00:14" },
             { name: "Hip Thrust / Glute Bridge", sets: "3×12–15", sub: "Kalça & Arka Zincir • Üst noktada 1–2 sn duraksama", videoId: "xDmFkJxPzeM", start: "00:20", end: "00:55" },
-            { name: "One-Arm DB Row / Machine Row", sets: "3×10–12", sub: "Sırt Kalınlığı • Tek taraflı dengeli çekiş", videoId: "pYcpY20QaE8", start: "00:15", end: "00:50" },
+            { name: "Seated Cable Row / Machine Row", sets: "3×10–12", sub: "Sırt Kalınlığı • Tek taraflı dengeli çekiş", videoId: "lJoozxC0Rns", start: "00:00", end: "00:15" },
             { name: "Push-Ups / Pec Deck Fly", sets: "3×12–15", sub: "Göğüs & Core • Tam göğüs sıkıştırması", videoId: "IODxDxX7oi4", start: "00:15", end: "00:50" },
             { name: "Rope Face Pull", sets: "3×15", sub: "Arka Omuz & Rotator Cuff • Dik duruş için kilit hareket", videoId: "rep-qVOkqgk", start: "00:20", end: "00:55" },
             { name: "Standing / Seated Calf Raise", sets: "3×15–20", sub: "Baldır • Alt noktada tam esneme, üstte sıkıştırma", videoId: "gwLzBJYoWlI", start: "00:15", end: "00:45" },
@@ -2642,9 +3017,9 @@ function doGet(e) {
           0: [
             { name: "Goblet Squat / Leg Press", sets: "3×10–12", sub: "Quads & Glutes • Upright torso, controlled depth", videoId: "MeIiIdhvXT4", start: "00:20", end: "00:55" },
             { name: "DB Bench Press / Chest Press", sets: "3×10–12", sub: "Chest & Anterior Delts • Keep scapulae retracted", videoId: "VmB1G1K7v94", start: "00:15", end: "00:50" },
+            { name: "Seated DB Shoulder Press", sets: "3×10–12", sub: "Shoulders • Braced core against bench pad", videoId: "qEwKCR5JCog", start: "00:15", end: "00:50" },
             { name: "Lat Pulldown", sets: "3×10–12", sub: "Lats & Upper Back • Pull elbows down toward ribs", videoId: "CAwf7n6Luuc", start: "00:15", end: "00:50" },
             { name: "Romanian Deadlift (DB / Bar)", sets: "3×10–12", sub: "Hamstrings & Glutes • Smooth hip hinge", videoId: "JCXUYuzwNrM", start: "00:25", end: "01:05" },
-            { name: "Seated DB Shoulder Press", sets: "3×10–12", sub: "Shoulders • Braced core against bench pad", videoId: "qEwKCR5JCog", start: "00:15", end: "00:50" },
             { name: "DB Bicep Curl + Rope Pushdown", sets: "2×12–15", sub: "Arm Superset (Biceps & Triceps) • Elbows pinned", videoId: "ykJmrZ5v0Oo", start: "00:15", end: "00:50" },
             { name: "Forearm Plank", sets: "3×30–45 s", sub: "Core • Glutes and abs braced in neutral spine", videoId: "pSHjTRCQxIw", start: "00:15", end: "00:45" }
           ],
@@ -2658,9 +3033,9 @@ function doGet(e) {
             { name: "Dead Bug / Abdominal Crunch", sets: "3×12/side", sub: "Deep Core • Keep lower back pressed into floor", videoId: "g_BYB0R-4Ws", start: "00:15", end: "00:50" }
           ],
           2: [
-            { name: "Leg Press / Leg Extension", sets: "3×12", sub: "Quad Focus • Controlled knee extension", videoId: "IZxyjW7MPJQ", start: "00:20", end: "00:55" },
+            { name: "Leg Extension", sets: "3×12", sub: "Quad Focus • Controlled knee extension", videoId: "4ZDm5EbiFI8", start: "00:00", end: "00:14" },
             { name: "Hip Thrust / Glute Bridge", sets: "3×12–15", sub: "Glutes & Posterior Chain • 1–2s hold at top", videoId: "xDmFkJxPzeM", start: "00:20", end: "00:55" },
-            { name: "One-Arm DB Row / Machine Row", sets: "3×10–12", sub: "Back Thickness • Unilateral lat pull", videoId: "pYcpY20QaE8", start: "00:15", end: "00:50" },
+            { name: "Seated Cable Row / Machine Row", sets: "3×10–12", sub: "Back Thickness • Unilateral lat pull", videoId: "lJoozxC0Rns", start: "00:00", end: "00:15" },
             { name: "Push-Ups / Pec Deck Fly", sets: "3×12–15", sub: "Chest & Core • Full pectoral contraction", videoId: "IODxDxX7oi4", start: "00:15", end: "00:50" },
             { name: "Rope Face Pull", sets: "3×15", sub: "Rear Delts & Rotator Cuff • Postural health", videoId: "rep-qVOkqgk", start: "00:20", end: "00:55" },
             { name: "Standing / Seated Calf Raise", sets: "3×15–20", sub: "Calves • Full stretch at bottom, pause at top", videoId: "gwLzBJYoWlI", start: "00:15", end: "00:45" },
@@ -2799,7 +3174,7 @@ function doGet(e) {
           0: [
             { name: "Pulldown", sets: "3×12–15", sub: "Latissimus dorsi • Omuzları bastırarak göğse dikey çekiş", videoId: "CAwf7n6Luuc", start: "00:15", end: "00:50" },
             { name: "Chest Supp Row", sets: "3×12–15", sub: "Orta sırt & Rhomboid • Göğüs destekli, bel yükü olmadan", videoId: "H75im9fAUMc", start: "00:20", end: "00:55" },
-            { name: "Pullaround", sets: "3×12–15", sub: "Tam esneme odaklı çapraz kablo lat çekişi", videoId: "CAwf7n6Luuc", start: "00:25", end: "01:00" },
+            { name: "Pullaround", sets: "3×12–15", sub: "Tam esneme odaklı çapraz kablo lat çekişi", videoId: "nezMK3HqvcQ", start: "00:00", end: "01:20" },
             { name: "Pendlay Row", sets: "3×12–15", sub: "Yerden patlayıcı yatay sırt çekişi, gövde yere paralel", videoId: "ZlRrIsoDpKg", start: "00:15", end: "00:50" },
             { name: "Cable Curl", sets: "3×12–15", sub: "Biceps • Sabit kablo gerilimi ile tam hareket açıklığı", videoId: "NFzTWp2qpiE", start: "00:15", end: "00:50" }
           ],
@@ -2808,7 +3183,7 @@ function doGet(e) {
             { name: "Good Morning", sets: "3×12–15", sub: "Arka zincir (Hamstring, Glute & Erector) menteşe hareketi", videoId: "YA-h3n9L4YU", start: "00:15", end: "00:50" },
             { name: "Leg Extension", sets: "3×12–15", sub: "Quadriceps izolasyonu • Üstte 1 sn sıkıştırma, kontrollü iniş", videoId: "YyvSfVjQeL0", start: "00:15", end: "00:50" },
             { name: "Seated Leg Curl", sets: "3×12–15", sub: "Hamstring hipertrofisi • Kalça fleksiyondayken maksimum gerilim", videoId: "Orxowest56U", start: "00:15", end: "00:50" },
-            { name: "Toe Press", sets: "3×12–15", sub: "Kalf (Gastrocnemius) • Alt noktada tam esneme ve duraksama", videoId: "gwLzBJYoWlI", start: "00:15", end: "00:50" },
+            { name: "Toe Press", sets: "3×12–15", sub: "Kalf (Gastrocnemius) • Alt noktada tam esneme ve duraksama", videoId: "DJorJrpcD60", start: "", end: "" },
             { name: "Romanian Deadlift (RDL)", sets: "3×12–15", sub: "Kalça geriye, bar bacaklara yakın kontrollü esneme", videoId: "JCXUYuzwNrM", start: "00:25", end: "01:05" }
           ],
           2: [
@@ -2822,7 +3197,7 @@ function doGet(e) {
           0: [
             { name: "Pulldown", sets: "3×12–15", sub: "Latissimus dorsi • Depress scapulae and drive elbows down", videoId: "CAwf7n6Luuc", start: "00:15", end: "00:50" },
             { name: "Chest Supp Row", sets: "3×12–15", sub: "Mid-back & Rhomboids • Chest-supported to eliminate lower-back shear", videoId: "H75im9fAUMc", start: "00:20", end: "00:55" },
-            { name: "Pullaround", sets: "3×12–15", sub: "Cross-body cable pull emphasizing maximum lat stretch", videoId: "CAwf7n6Luuc", start: "00:25", end: "01:00" },
+            { name: "Pullaround", sets: "3×12–15", sub: "Cross-body cable pull emphasizing maximum lat stretch", videoId: "nezMK3HqvcQ", start: "00:00", end: "01:20" },
             { name: "Pendlay Row", sets: "3×12–15", sub: "Explosive concentric row from floor with torso parallel", videoId: "ZlRrIsoDpKg", start: "00:15", end: "00:50" },
             { name: "Cable Curl", sets: "3×12–15", sub: "Biceps • Constant cable tension through full elbow flexion", videoId: "NFzTWp2qpiE", start: "00:15", end: "00:50" }
           ],
@@ -2831,7 +3206,7 @@ function doGet(e) {
             { name: "Good Morning", sets: "3×12–15", sub: "Posterior chain hip-hinge loading hamstrings and erectors", videoId: "YA-h3n9L4YU", start: "00:15", end: "00:50" },
             { name: "Leg Extension", sets: "3×12–15", sub: "Rectus femoris isolation • 1s peak contraction at top", videoId: "YyvSfVjQeL0", start: "00:15", end: "00:50" },
             { name: "Seated Leg Curl", sets: "3×12–15", sub: "Hamstring hypertrophy in lengthened hip-flexed position", videoId: "Orxowest56U", start: "00:15", end: "00:50" },
-            { name: "Toe Press", sets: "3×12–15", sub: "Gastrocnemius • Deep pause at bottom stretch", videoId: "gwLzBJYoWlI", start: "00:15", end: "00:50" },
+            { name: "Toe Press", sets: "3×12–15", sub: "Gastrocnemius • Deep pause at bottom stretch", videoId: "DJorJrpcD60", start: "", end: "" },
             { name: "Romanian Deadlift (RDL)", sets: "3×12–15", sub: "Controlled hip hinge keeping barbell close to shins", videoId: "JCXUYuzwNrM", start: "00:25", end: "01:05" }
           ],
           2: [
@@ -2862,15 +3237,11 @@ function doGet(e) {
             { name: "Barbell Squat", sets: "5×5", sub: "Başarılıysa sonraki antrenman +2.5 kg (Tonaj: Ağırlık × 25)", videoId: "bEv6CCg2BC8", start: "00:45", end: "01:25" },
             { name: "Overhead Press (OHP)", sets: "5×5", sub: "Ayakta strict press, karın ve kalça sıkı", videoId: "2yjwXTZQDDI", start: "00:20", end: "00:55" },
             { name: "Romanian Deadlift (RDL)", sets: "1×5", sub: "Ağır tek çalışma seti (Tonaj: Ağırlık × 5)", videoId: "JCXUYuzwNrM", start: "00:25", end: "01:05" },
-            { name: "Inverted Rows (Accessory)", sets: "3×8", sub: "Vücut ağırlığı yatay çekiş dengesi", videoId: "hXTc1mDnZCw", start: "00:15", end: "00:50" },
-            { name: "Cardio: Rowing / Incline Walk", sets: "8–12 dk", sub: "30/30 sn interval veya 15 eğim yürüyüş", videoId: "H0r_ZPXJLtg", start: "00:20", end: "01:00" }
           ],
           1: [
             { name: "Barbell Squat", sets: "5×5", sub: "Her antrenmanın temel taşı, tam derinlik", videoId: "bEv6CCg2BC8", start: "00:45", end: "01:25" },
             { name: "Bench Press", sets: "5×5", sub: "Başarılıysa sonraki B gününde +2.5 kg", videoId: "vcBig73ojpE", start: "00:30", end: "01:10" },
             { name: "Pendlay Row", sets: "5×5", sub: "Her tekrarda bar yerden kalkar, patlayıcı çekiş", videoId: "ZlRrIsoDpKg", start: "00:15", end: "00:50" },
-            { name: "Negative Pull-ups (Accessory)", sets: "8 tekrar", sub: "Üstten yavaş (3-5 sn) kontrollü iniş", videoId: "eGo4IYlbE5g", start: "00:20", end: "00:55" },
-            { name: "Cardio: Incline Treadmill", sets: "10–12 dk", sub: "4.5 km/s sabit tempo", videoId: "8iPEnn-ltC8", start: "00:15", end: "00:45" }
           ]
         },
         lists_en: {
@@ -2878,14 +3249,12 @@ function doGet(e) {
             { name: "Barbell Squat", sets: "5×5", sub: "Add +2.5 kg next session if successful (Tonnage: Weight × 25)", videoId: "bEv6CCg2BC8", start: "00:45", end: "01:25" },
             { name: "Overhead Press (OHP)", sets: "5×5", sub: "Standing strict overhead press with glutes & abs braced", videoId: "2yjwXTZQDDI", start: "00:20", end: "00:55" },
             { name: "Romanian Deadlift (RDL)", sets: "1×5", sub: "Single heavy top working set (Tonnage: Weight × 5)", videoId: "JCXUYuzwNrM", start: "00:25", end: "01:05" },
-            { name: "Inverted Rows (Accessory)", sets: "3×8", sub: "Bodyweight horizontal pulling balance", videoId: "hXTc1mDnZCw", start: "00:15", end: "00:50" },
             { name: "Cardio: Rowing / Incline Walk", sets: "8–12 min", sub: "30/30s intervals or 15% incline treadmill walk", videoId: "H0r_ZPXJLtg", start: "00:20", end: "01:00" }
           ],
           1: [
             { name: "Barbell Squat", sets: "5×5", sub: "Cornerstone movement of every session, full depth", videoId: "bEv6CCg2BC8", start: "00:45", end: "01:25" },
             { name: "Bench Press", sets: "5×5", sub: "Add +2.5 kg on the next Workout B if all 5×5 completed", videoId: "vcBig73ojpE", start: "00:30", end: "01:10" },
             { name: "Pendlay Row", sets: "5×5", sub: "Dead-stop barbell row from floor each repetition", videoId: "ZlRrIsoDpKg", start: "00:15", end: "00:50" },
-            { name: "Negative Pull-ups (Accessory)", sets: "8 reps", sub: "Controlled 3–5 second eccentric lowering phase", videoId: "eGo4IYlbE5g", start: "00:20", end: "00:55" },
             { name: "Cardio: Incline Treadmill", sets: "10–12 min", sub: "15% incline at 4.5 km/h steady pace", videoId: "8iPEnn-ltC8", start: "00:15", end: "00:45" }
           ]
         }
@@ -2981,32 +3350,32 @@ function doGet(e) {
         days_en: ["Full Routine (15–20 min)", "⚡ Short Mode (5 min)"],
         lists_tr: {
           0: [
-            { name: "Wall Prayer Stretch", sets: "2×30–45 sn", sub: "Torasik ekstansiyon • Dizler yerde, kollar duvarda göğsü aşağı bastır", videoId: "Mv3zY92KzK4", start: "00:10", end: "00:40" },
-            { name: "Open Book (Thoracic Rotation)", sets: "2×6–8/taraf", sub: "Yan yatarak leğen kemiği sabit, göğüs kafesini geriye aç", videoId: "g_BYB0R-4Ws", start: "00:15", end: "00:45" },
-            { name: "Doorway Pec Stretch", sets: "2×30–45 sn", sub: "Kapı eşiğinde ön göğüs açma • Omuzlar geride, kaburgalar içeride", videoId: "wQylqaCl8Zo", start: "00:15", end: "00:45" },
-            { name: "Chin Tuck + DNF", sets: "2×10 × 5 sn", sub: "İleri baş düzeltme • Çeneyi geriye çek, derin boyun fleksörlerini sık", videoId: "wQylqaCl8Zo", start: "00:20", end: "00:50" },
-            { name: "Wall Angels / Wall Slides", sets: "2×10–12", sub: "Skapular kontrol • Bel, dirsek ve bilekleri duvara yaslayarak yukarı kaydır", videoId: "Mv3zY92KzK4", start: "00:15", end: "00:45" },
-            { name: "Towel External Rotation Isometric", sets: "2×20–30 sn", sub: "Dirsekler 90° gövdede sabit, havluyu dışa çekerek dış omuz aktivasyonu", videoId: "rep-qVOkqgk", start: "00:15", end: "00:45" }
+            { name: "Wall Prayer Stretch", sets: "2×30–45 sn", sub: "Torasik ekstansiyon • Dizler yerde, kollar duvarda göğsü aşağı bastır", videoId: "Keqxp-Jv24M", start: "00:00", end: "00:40" },
+            { name: "Open Book (Thoracic Rotation)", sets: "2×6–8/taraf", sub: "Yan yatarak leğen kemiği sabit, göğüs kafesini geriye aç", videoId: "e71IP2SLrRc", start: "00:00", end: "00:30" },
+            { name: "Doorway Pec Stretch", sets: "2×30–45 sn", sub: "Kapı eşiğinde ön göğüs açma • Omuzlar geride, kaburgalar içeride", videoId: "CEQMx4zFwYs", start: "00:03", end: "00:45" },
+            { name: "Chin Tuck + DNF", sets: "2×10 × 5 sn", sub: "İleri baş düzeltme • Çeneyi geriye çek, derin boyun fleksörlerini sık", videoId: "yemVMNDrFqs", start: "00:20", end: "01:23" },
+            { name: "Wall Angels", sets: "2×10–12", sub: "Skapular kontrol • Bel, dirsek ve bilekleri duvara yaslayarak yukarı kaydır", videoId: "1UU4VvklQ44", start: "00:15", end: "00:58" },
+            { name: "Towel External Rotation Isometric", sets: "2×20–30 sn", sub: "Dirsekler 90° gövdede sabit, havluyu dışa çekerek dış omuz aktivasyonu", videoId: "Y5PbMAMEwpk", start: "00:00", end: "00:30" }
           ],
           1: [
-            { name: "1. Chin Tuck + DNF", sets: "2×10 × 5 sn", sub: "Hızlı servikal boyun hizalama", videoId: "wQylqaCl8Zo", start: "00:20", end: "00:50" },
-            { name: "2. Doorway Pec Stretch", sets: "2×30 sn", sub: "Ön göğüs liflerini rahatlatma", videoId: "wQylqaCl8Zo", start: "00:15", end: "00:45" },
-            { name: "3. Wall Slides", sets: "2×10 tekrar", sub: "Sırt ve kürek kemiği aktivasyonu", videoId: "Mv3zY92KzK4", start: "00:15", end: "00:45" }
+            { name: "1. Chin Tuck + DNF", sets: "2×10 × 5 sn", sub: "Hızlı servikal boyun hizalama", videoId: "yemVMNDrFqs", start: "00:20", end: "01:23" },
+            { name: "2. Doorway Pec Stretch", sets: "2×30 sn", sub: "Ön göğüs liflerini rahatlatma", videoId: "CEQMx4zFwYs", start: "00:03", end: "00:45" },
+            { name: "3. Wall Slides", sets: "2×10 tekrar", sub: "Sırt ve kürek kemiği aktivasyonu", videoId: "WIdjSjzNS2A", start: "00:00", end: "00:35" }
           ]
         },
         lists_en: {
           0: [
-            { name: "Wall Prayer Stretch", sets: "2×30–45 s", sub: "Thoracic extension & lat release with forearms on wall", videoId: "Mv3zY92KzK4", start: "00:10", end: "00:40" },
-            { name: "Open Book (Thoracic Rotation)", sets: "2×6–8/side", sub: "Side-lying ribcage rotation keeping pelvis locked", videoId: "g_BYB0R-4Ws", start: "00:15", end: "00:45" },
-            { name: "Doorway Pec Stretch", sets: "2×30–45 s", sub: "Pectoral opening keeping ribcage pulled down", videoId: "wQylqaCl8Zo", start: "00:15", end: "00:45" },
-            { name: "Chin Tuck + DNF", sets: "2×10 × 5 s", sub: "Deep cervical flexor isometric hold against forward head", videoId: "wQylqaCl8Zo", start: "00:20", end: "00:50" },
-            { name: "Wall Angels / Wall Slides", sets: "2×10–12", sub: "Scapular upward rotation with wrists close to wall", videoId: "Mv3zY92KzK4", start: "00:15", end: "00:45" },
-            { name: "Towel External Rotation Isometric", sets: "2×20–30 s", sub: "Elbows pinned at 90°, pull towel outward for rotator cuff", videoId: "rep-qVOkqgk", start: "00:15", end: "00:45" }
+            { name: "Wall Prayer Stretch", sets: "2×30–45 s", sub: "Thoracic extension & lat release with forearms on wall", videoId: "Keqxp-Jv24M", start: "00:00", end: "00:40" },
+            { name: "Open Book (Thoracic Rotation)", sets: "2×6–8/side", sub: "Side-lying ribcage rotation keeping pelvis locked", videoId: "e71IP2SLrRc", start: "00:00", end: "00:30" },
+            { name: "Doorway Pec Stretch", sets: "2×30–45 s", sub: "Pectoral opening keeping ribcage pulled down", videoId: "CEQMx4zFwYs", start: "00:03", end: "00:45" },
+            { name: "Chin Tuck + DNF", sets: "2×10 × 5 s", sub: "Deep cervical flexor isometric hold against forward head", videoId: "yemVMNDrFqs", start: "00:20", end: "01:23" },
+            { name: "Wall Angels", sets: "2×10–12", sub: "Scapular upward rotation with wrists close to wall", videoId: "1UU4VvklQ44", start: "00:06", end: "00:58" },
+            { name: "Towel External Rotation Isometric", sets: "2×20–30 s", sub: "Elbows pinned at 90°, pull towel outward for rotator cuff", videoId: "Y5PbMAMEwpk", start: "00:00", end: "00:30" }
           ],
           1: [
-            { name: "1. Chin Tuck + DNF", sets: "2×10 × 5 s", sub: "Quick cervical alignment", videoId: "wQylqaCl8Zo", start: "00:20", end: "00:50" },
-            { name: "2. Doorway Pec Stretch", sets: "2×30 s", sub: "Anterior chest release", videoId: "wQylqaCl8Zo", start: "00:15", end: "00:45" },
-            { name: "3. Wall Slides", sets: "2×10 reps", sub: "Mid-back activation", videoId: "Mv3zY92KzK4", start: "00:15", end: "00:45" }
+            { name: "1. Chin Tuck + DNF", sets: "2×10 × 5 s", sub: "Quick cervical alignment", videoId: "yemVMNDrFqs", start: "00:20", end: "01:23" },
+            { name: "2. Doorway Pec Stretch", sets: "2×30 s", sub: "Anterior chest release", videoId: "CEQMx4zFwYs", start: "00:03", end: "00:45" },
+            { name: "3. Wall Slides", sets: "2×10 reps", sub: "Mid-back activation", videoId: "WIdjSjzNS2A", start: "00:00", end: "00:35" }
           ]
         }
       },
@@ -3027,32 +3396,32 @@ function doGet(e) {
         days_en: ["Full Leg Routine (15–20 min)", "⚡ Quick Leg Mode (5 min)"],
         lists_tr: {
           0: [
-            { name: "Supine Hamstring Stretch (Towel / Strap)", sets: "2×30–45 sn/bacak", sub: "Sırtüstü bacağı dikey uzat • Diz hafif bükük başlayıp yavaşça düzelt", videoId: "FDwpEdxZ4H4", start: "00:15", end: "00:45" },
-            { name: "Standing / Lying Quad Stretch", sets: "2×30–45 sn/bacak", sub: "Ayakta ayak bileğini kalçaya çek • Dizler yan yana, dik gövde", videoId: "y-wV4Venusw", start: "00:15", end: "00:45" },
-            { name: "Calf Wall Stretch (Gastroc & Soleus)", sets: "2×30–45 sn/bacak", sub: "Duvara karşı arka bacak gergin, topuk yerde düz baldır esnetme", videoId: "gwLzBJYoWlI", start: "00:15", end: "00:45" },
-            { name: "Seated Butterfly Stretch (Adductors)", sets: "2×40–60 sn", sub: "Ayak tabanları birleşik, sırt dik, dizleri nazikçe yere doğru bırak", videoId: "FDwpEdxZ4H4", start: "00:20", end: "00:50" },
-            { name: "Figure-4 / Pigeon Hip Stretch", sets: "2×30–40 sn/taraf", sub: "Kalça dış rotatorları (Glute/Piriformis) rahatlatma", videoId: "n_hNn1q11v4", start: "00:15", end: "00:45" },
-            { name: "World's Greatest Stretch", sets: "2×5 tekrar/taraf", sub: "Tüm alt vücut, kalça ve ayak bileği kombine mobilite", videoId: "2C-uNgKwPLE", start: "00:15", end: "00:45" }
+            { name: "Supine Hamstring Stretch (Towel / Strap)", sets: "2×30–45 sn/bacak", sub: "Sırtüstü bacağı dikey uzat • Diz hafif bükük başlayıp yavaşça düzelt", videoId: "Q4_TmIekeZ8", start: "00:00", end: "00:47" },
+            { name: "Standing / Lying Quad Stretch", sets: "2×30–45 sn/bacak", sub: "Ayakta ayak bileğini kalçaya çek • Dizler yan yana, dik gövde", videoId: "UZ-GSxmr2zs", start: "00:00", end: "00:27" },
+            { name: "Calf Wall Stretch (Gastroc & Soleus)", sets: "2×30–45 sn/bacak", sub: "Duvara karşı arka bacak gergin, topuk yerde düz baldır esnetme", videoId: "trC42QD0wQI", start: "00:20", end: "01:10" },
+            { name: "Seated Butterfly Stretch (Adductors)", sets: "2×40–60 sn", sub: "Ayak tabanları birleşik, sırt dik, dizleri nazikçe yere doğru bırak", videoId: "cfJcO7gi3zw", start: "00:00", end: "00:13" },
+            { name: "Figure-4 / Pigeon Hip Stretch", sets: "2×30–40 sn/taraf", sub: "Kalça dış rotatorları (Glute/Piriformis) rahatlatma", videoId: "Xb5gHdYtHnk", start: "00:00", end: "00:45" },
+            { name: "World's Greatest Stretch", sets: "2×5 tekrar/taraf", sub: "Tüm alt vücut, kalça ve ayak bileği kombine mobilite", videoId: "pO3KPQ5fzJ0", start: "00:00", end: "00:29" }
           ],
           1: [
-            { name: "1. Standing Quad Stretch", sets: "2×30 sn/bacak", sub: "Ön bacak kaslarını gevşetme", videoId: "y-wV4Venusw", start: "00:15", end: "00:45" },
-            { name: "2. Supine Hamstring Stretch", sets: "2×30 sn/bacak", sub: "Arka bacak liflerini uzatma", videoId: "FDwpEdxZ4H4", start: "00:15", end: "00:45" },
-            { name: "3. Calf Wall Stretch", sets: "2×30 sn/bacak", sub: "Baldır ve aşil tendon rahatlatma", videoId: "gwLzBJYoWlI", start: "00:15", end: "00:45" }
+            { name: "1. Standing Quad Stretch", sets: "2×30 sn/bacak", sub: "Ön bacak kaslarını gevşetme", videoId: "UZ-GSxmr2zs", start: "00:00", end: "00:27" },
+            { name: "2. Supine Hamstring Stretch", sets: "2×30 sn/bacak", sub: "Arka bacak liflerini uzatma", videoId: "Q4_TmIekeZ8", start: "00:00", end: "00:47" },
+            { name: "3. Calf Wall Stretch", sets: "2×30 sn/bacak", sub: "Baldır ve aşil tendon rahatlatma", videoId: "trC42QD0wQI", start: "00:20", end: "01:10" }
           ]
         },
         lists_en: {
           0: [
-            { name: "Supine Hamstring Stretch (Towel / Strap)", sets: "2×30–45 s/leg", sub: "Supine vertical leg raise with towel gently extending knee", videoId: "FDwpEdxZ4H4", start: "00:15", end: "00:45" },
-            { name: "Standing / Lying Quad Stretch", sets: "2×30–45 s/leg", sub: "Pull heel to glute keeping knees aligned and hips tall", videoId: "y-wV4Venusw", start: "00:15", end: "00:45" },
-            { name: "Calf Wall Stretch (Gastroc & Soleus)", sets: "2×30–45 s/leg", sub: "Staggered wall stretch keeping trailing heel flat on floor", videoId: "gwLzBJYoWlI", start: "00:15", end: "00:45" },
-            { name: "Seated Butterfly Stretch (Adductors)", sets: "2×40–60 s", sub: "Soles together, tall spine, gently opening inner thighs", videoId: "FDwpEdxZ4H4", start: "00:20", end: "00:50" },
-            { name: "Figure-4 / Pigeon Hip Stretch", sets: "2×30–40 s/side", sub: "Glute medius and piriformis deep release", videoId: "n_hNn1q11v4", start: "00:15", end: "00:45" },
-            { name: "World's Greatest Stretch", sets: "2×5 reps/side", sub: "Deep lunge with thoracic twist for total lower kinetic mobility", videoId: "2C-uNgKwPLE", start: "00:15", end: "00:45" }
+            { name: "Supine Hamstring Stretch (Towel / Strap)", sets: "2×30–45 s/leg", sub: "Supine vertical leg raise with towel gently extending knee", videoId: "Q4_TmIekeZ8", start: "00:00", end: "00:47" },
+            { name: "Standing / Lying Quad Stretch", sets: "2×30–45 s/leg", sub: "Pull heel to glute keeping knees aligned and hips tall", videoId: "UZ-GSxmr2zs", start: "00:00", end: "00:27" },
+            { name: "Calf Wall Stretch (Gastroc & Soleus)", sets: "2×30–45 s/leg", sub: "Staggered wall stretch keeping trailing heel flat on floor", videoId: "trC42QD0wQI", start: "00:20", end: "01:10" },
+            { name: "Seated Butterfly Stretch (Adductors)", sets: "2×40–60 s", sub: "Soles together, tall spine, gently opening inner thighs", videoId: "cfJcO7gi3zw", start: "00:00", end: "00:13" },
+            { name: "Figure-4 / Pigeon Hip Stretch", sets: "2×30–40 s/side", sub: "Glute medius and piriformis deep release", videoId: "Xb5gHdYtHnk", start: "00:00", end: "00:45" },
+            { name: "World's Greatest Stretch", sets: "2×5 reps/side", sub: "Deep lunge with thoracic twist for total lower kinetic mobility", videoId: "pO3KPQ5fzJ0", start: "00:00", end: "00:29" }
           ],
           1: [
-            { name: "1. Standing Quad Stretch", sets: "2×30 s/leg", sub: "Quadriceps release", videoId: "y-wV4Venusw", start: "00:15", end: "00:45" },
-            { name: "2. Supine Hamstring Stretch", sets: "2×30 s/leg", sub: "Hamstring lengthening", videoId: "FDwpEdxZ4H4", start: "00:15", end: "00:45" },
-            { name: "3. Calf Wall Stretch", sets: "2×30 s/leg", sub: "Achilles and calf release", videoId: "gwLzBJYoWlI", start: "00:15", end: "00:45" }
+            { name: "1. Standing Quad Stretch", sets: "2×30 s/leg", sub: "Quadriceps release", videoId: "UZ-GSxmr2zs", start: "00:00", end: "00:27" },
+            { name: "2. Supine Hamstring Stretch", sets: "2×30 s/leg", sub: "Hamstring lengthening", videoId: "Q4_TmIekeZ8", start: "00:00", end: "00:47" },
+            { name: "3. Calf Wall Stretch", sets: "2×30 s/leg", sub: "Achilles and calf release", videoId: "trC42QD0wQI", start: "00:20", end: "01:10" }
           ]
         }
       },
@@ -3073,32 +3442,32 @@ function doGet(e) {
         days_en: ["Full APT Routine (15–20 min)", "⚡ Quick Pelvic Reset (5 min)"],
         lists_tr: {
           0: [
-            { name: "Posterior Pelvic Tilt (PPT) Drill", sets: "2×10–12", sub: "Sırtüstü kuyruk sokumu içeri • Beli yere tam mühürle, kaburgalar aşağıda", videoId: "n_hNn1q11v4", start: "00:15", end: "00:55" },
-            { name: "Half-Kneeling Hip Flexor Stretch (with PPT)", sets: "2×45 sn/bacak", sub: "Arka kalçayı sıkarak PPT kilitli iliopsoas esnetme • Asla beli çukurlaştırma", videoId: "UGEpQ1BRx-4", start: "00:15", end: "00:50" },
-            { name: "Couch Stretch (Wall-Supported)", sets: "2×30–45 sn/bacak", sub: "Arka ayak duvarda, gövde dik • Ön üst bacak (Rectus Femoris) derin uzatma", videoId: "UGEpQ1BRx-4", start: "00:25", end: "01:00" },
-            { name: "Glute Bridge (2s Peak PPT Hold)", sets: "2×12–15", sub: "Üst noktada kalçayı 2 sn tam sık, aşırı bel kavisinden kaçın", videoId: "xDmFkJxPzeM", start: "00:15", end: "00:50" },
+            { name: "Posterior Pelvic Tilt (PPT) Drill", sets: "2×10–12", sub: "Sırtüstü kuyruk sokumu içeri • Beli yere tam mühürle, kaburgalar aşağıda", videoId: "n43_5qfFi_k", start: "00:00", end: "00:55" },
+            { name: "Half-Kneeling Hip Flexor Stretch (with PPT)", sets: "2×45 sn/bacak", sub: "Arka kalçayı sıkarak PPT kilitli iliopsoas esnetme • Asla beli çukurlaştırma", videoId: "bnVfloe6yTo", start: "00:00", end: "00:32" },
+            { name: "Couch Stretch (Wall-Supported)", sets: "2×30–45 sn/bacak", sub: "Arka ayak duvarda, gövde dik • Ön üst bacak (Rectus Femoris) derin uzatma", videoId: "Fg-lwNBzVV8", start: "00:03", end: "00:49" },
+            { name: "Glute Bridge (2s Peak PPT Hold)", sets: "2×12–15", sub: "Üst noktada kalçayı 2 sn tam sık, aşırı bel kavisinden kaçın", videoId: "pC3ADHxlcHw", start: "00:00", end: "00:44" },
             { name: "Dead Bug (Controlled Lumbopelvic)", sets: "2×8–10/taraf", sub: "Nefes vererek zıt kol/bacak uzat • Bel yerden asla kopmayacak", videoId: "g_BYB0R-4Ws", start: "00:15", end: "00:50" },
             { name: "Bird-Dog", sets: "2×8–10/taraf", sub: "Dört ayak üzerinde omurga nötr, kalçayı ve sırtı sallamadan uzan", videoId: "wiFNA3sqjCA", start: "00:15", end: "00:45" }
           ],
           1: [
-            { name: "1. Posterior Pelvic Tilt (PPT) Drill", sets: "2×10 tekrar", sub: "Pelvik kontrol başlangıcı", videoId: "n_hNn1q11v4", start: "00:15", end: "00:55" },
-            { name: "2. Half-Kneeling Hip Flexor Stretch", sets: "2×30 sn/bacak", sub: "Kalça fleksörü açma", videoId: "UGEpQ1BRx-4", start: "00:15", end: "00:50" },
-            { name: "3. Glute Bridge", sets: "2×12 tekrar", sub: "Glute aktivasyonu", videoId: "xDmFkJxPzeM", start: "00:15", end: "00:50" }
+            { name: "1. Posterior Pelvic Tilt (PPT) Drill", sets: "2×10 tekrar", sub: "Pelvik kontrol başlangıcı", videoId: "n43_5qfFi_k", start: "00:00", end: "00:55" },
+            { name: "2. Half-Kneeling Hip Flexor Stretch", sets: "2×30 sn/bacak", sub: "Kalça fleksörü açma", videoId: "bnVfloe6yTo", start: "00:00", end: "00:32" },
+            { name: "3. Glute Bridge", sets: "2×12 tekrar", sub: "Glute aktivasyonu", videoId: "Xp33YgPZgns", start: "00:00", end: "00:32" }
           ]
         },
         lists_en: {
           0: [
-            { name: "Posterior Pelvic Tilt (PPT) Drill", sets: "2×10–12", sub: "Supine tail-tuck gently flattening lumbar spine into mat", videoId: "n_hNn1q11v4", start: "00:15", end: "00:55" },
-            { name: "Half-Kneeling Hip Flexor Stretch (with PPT)", sets: "2×45 s/leg", sub: "Squeeze trailing glute to lock PPT and stretch iliopsoas", videoId: "UGEpQ1BRx-4", start: "00:15", end: "00:50" },
-            { name: "Couch Stretch (Wall-Supported)", sets: "2×30–45 s/leg", sub: "Rear foot on wall with upright torso for deep rectus femoris release", videoId: "UGEpQ1BRx-4", start: "00:25", end: "01:00" },
-            { name: "Glute Bridge (2s Peak PPT Hold)", sets: "2×12–15", sub: "Squeeze glutes at top without lumbar hyperextension", videoId: "xDmFkJxPzeM", start: "00:15", end: "00:50" },
+            { name: "Posterior Pelvic Tilt (PPT) Drill", sets: "2×10–12", sub: "Supine tail-tuck gently flattening lumbar spine into mat", videoId: "n43_5qfFi_k", start: "00:00", end: "00:55" },
+            { name: "Half-Kneeling Hip Flexor Stretch (with PPT)", sets: "2×45 s/leg", sub: "Squeeze trailing glute to lock PPT and stretch iliopsoas", videoId: "bnVfloe6yTo", start: "00:00", end: "00:32" },
+            { name: "Couch Stretch (Wall-Supported)", sets: "2×30–45 s/leg", sub: "Rear foot on wall with upright torso for deep rectus femoris release", videoId: "Fg-lwNBzVV8", start: "00:03", end: "00:49" },
+            { name: "Glute Bridge (2s Peak PPT Hold)", sets: "2×12–15", sub: "Squeeze glutes at top without lumbar hyperextension", videoId: "pC3ADHxlcHw", start: "00:00", end: "00:44" },
             { name: "Dead Bug (Controlled Lumbopelvic)", sets: "2×8–10/side", sub: "Imprint lower back into floor throughout opposite limb reaches", videoId: "g_BYB0R-4Ws", start: "00:15", end: "00:50" },
             { name: "Bird-Dog", sets: "2×8–10/side", sub: "Quadruped anti-rotational stability and posterior chain coordination", videoId: "wiFNA3sqjCA", start: "00:15", end: "00:45" }
           ],
           1: [
-            { name: "1. Posterior Pelvic Tilt (PPT) Drill", sets: "2×10 reps", sub: "Pelvic awareness reset", videoId: "n_hNn1q11v4", start: "00:15", end: "00:55" },
-            { name: "2. Half-Kneeling Hip Flexor Stretch", sets: "2×30 s/leg", sub: "Hip flexor release", videoId: "UGEpQ1BRx-4", start: "00:15", end: "00:50" },
-            { name: "3. Glute Bridge", sets: "2×12 reps", sub: "Glute activation", videoId: "xDmFkJxPzeM", start: "00:15", end: "00:50" }
+            { name: "1. Posterior Pelvic Tilt (PPT) Drill", sets: "2×10 reps", sub: "Pelvic awareness reset", videoId: "n43_5qfFi_k", start: "00:00", end: "00:55" },
+            { name: "2. Half-Kneeling Hip Flexor Stretch", sets: "2×30 s/leg", sub: "Hip flexor release", videoId: "bnVfloe6yTo", start: "00:00", end: "00:32" },
+            { name: "3. Glute Bridge", sets: "2×12 reps", sub: "Glute activation", videoId: "Xp33YgPZgns", start: "00:00", end: "00:32" }
           ]
         }
       },
@@ -3610,7 +3979,7 @@ function doGet(e) {
         gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
         osc.start();
         osc.stop(ctx.currentTime + 0.25);
-      } catch (e) {}
+      } catch (e) { }
     }
 
     function triggerHaptic() {
@@ -3633,7 +4002,7 @@ function doGet(e) {
       }
       const dt = getDateKey();
       if (!appData.logs[dt]) appData.logs[dt] = {};
-      
+
       const isDone = !appData.logs[dt][habitId];
       if (isDone) {
         appData.logs[dt][habitId] = true;
@@ -3647,7 +4016,7 @@ function doGet(e) {
         playChime();
         showXpToast(habit.xp);
       }
-      
+
       saveToStorage();
       renderAll();
     }
@@ -3656,7 +4025,7 @@ function doGet(e) {
       const dt = getDateKey();
       if (!appData.wellness[dt]) appData.wellness[dt] = {};
       appData.wellness[dt].mood = Number(val);
-      document.getElementById('moodValueLabel').textContent = `${val} ${['','😢','😐','🙂','😊','🔥'][val]}`;
+      document.getElementById('moodValueLabel').textContent = `${val} ${['', '😢', '😐', '🙂', '😊', '🔥'][val]}`;
       saveToStorage();
       drawRadarChart();
     }
@@ -3742,7 +4111,7 @@ function doGet(e) {
         cats[h.cat].push(dayLog[h.id] ? 100 : 0);
       });
 
-      const avg = (arr) => arr.length ? Math.round(arr.reduce((a,b)=>a+b,0)/arr.length) : 0;
+      const avg = (arr) => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : 0;
 
       if (appData.wellness[dt] && appData.wellness[dt].sleep) {
         const sleepScore = Math.min(100, Math.round((appData.wellness[dt].sleep / 8.0) * 100));
@@ -3993,7 +4362,7 @@ function doGet(e) {
       if (btnNext) {
         btnNext.style.opacity = (dt >= todayDt) ? '0.3' : '1';
       }
-      
+
       const dayLog = appData.logs[dt] || {};
       const container = document.getElementById('habitListContainer');
       container.innerHTML = '';
@@ -4022,7 +4391,7 @@ function doGet(e) {
             </div>
           </div>
           <div style="display:flex;align-items:center;gap:6px">
-            ${(h.id === 3 || /kitap|book|okuma|read/i.test((h.name_tr||'')+(h.name_en||''))) ? `<button class="btn-habit-inline" onclick="event.stopPropagation(); openAddBookModal()">📚 ${getLang() === 'en' ? 'Book Done' : 'Kitap Bitti'}</button>` : ''}
+            ${(h.id === 3 || /kitap|book|okuma|read/i.test((h.name_tr || '') + (h.name_en || ''))) ? `<button class="btn-habit-inline" onclick="event.stopPropagation(); openAddBookModal()">📚 ${getLang() === 'en' ? 'Book Done' : 'Kitap Bitti'}</button>` : ''}
             <div class="streak-badge">
               <span>🔥</span>
               <span>${streak}</span>
@@ -4040,7 +4409,7 @@ function doGet(e) {
       const wData = appData.wellness[dt] || {};
       if (wData.mood) {
         document.getElementById('moodSlider').value = wData.mood;
-        document.getElementById('moodValueLabel').textContent = `${wData.mood} ${['','😢','😐','🙂','😊','🔥'][wData.mood]}`;
+        document.getElementById('moodValueLabel').textContent = `${wData.mood} ${['', '😢', '😐', '🙂', '😊', '🔥'][wData.mood]}`;
       } else {
         document.getElementById('moodValueLabel').textContent = t('not_selected');
       }
@@ -4116,7 +4485,7 @@ function doGet(e) {
       listContainer.innerHTML = '';
       const listsObj = (lang === 'en' ? (prog.lists_en || prog.lists_tr) : (prog.lists_tr || prog.lists_en)) || prog.lists || {};
       const exercises = listsObj[currentProgramSubIndex] || [];
-      
+
       exercises.forEach((ex, idx) => {
         const videoData = getExerciseVideoData(ex);
         const hasVideo = !!(videoData && videoData.videoId);
@@ -4244,8 +4613,8 @@ function doGet(e) {
               <td>${arms}</td>
               <td>
                 <div style="display:flex;gap:4px">
-                  <button class="btn-header" style="padding:2px 6px;font-size:0.64rem" onclick="openAddMeasureModal(${ mIdx })" title="Düzenle">✏️</button>
-                  <button class="btn-header" style="padding:2px 6px;font-size:0.64rem;color:var(--accent-red)" onclick="deleteMeasure(${ mIdx })" title="Sil">✕</button>
+                  <button class="btn-header" style="padding:2px 6px;font-size:0.64rem" onclick="openAddMeasureModal(${mIdx})" title="Düzenle">✏️</button>
+                  <button class="btn-header" style="padding:2px 6px;font-size:0.64rem;color:var(--accent-red)" onclick="deleteMeasure(${mIdx})" title="Sil">✕</button>
                 </div>
               </td>
             </tr>
@@ -4271,7 +4640,7 @@ function doGet(e) {
         }
         const defObj = DAILY_LIFE_ROUTINES[l] || DAILY_LIFE_ROUTINES.tr;
         const curPills = appData.routines[l].pills || [];
-        
+
         // Filter pills to strictly contain the 4 core pillars
         const updatedPills = [];
         FIXED_ROUTINE_PILL_KEYS.forEach(k => {
@@ -4779,7 +5148,7 @@ function doGet(e) {
           barChartHtml += `
             <div class="tier-bar-col ${isReached ? 'reached' : ''}">
               <div class="tier-bar-visual-wrap" title="${tMeta.name_tr}: ${tTarget} ${unit}">
-                <div class="tier-bar-visual" style="height:${isReached ? heightStep : Math.max(12, Math.round((stepFillPct/100)*heightStep))}%;background:${barColor};opacity:${opacity}"></div>
+                <div class="tier-bar-visual" style="height:${isReached ? heightStep : Math.max(12, Math.round((stepFillPct / 100) * heightStep))}%;background:${barColor};opacity:${opacity}"></div>
               </div>
               <div class="tier-bar-lbl">${tMeta.icon}<br>${tTarget}</div>
             </div>
@@ -5322,32 +5691,32 @@ function doGet(e) {
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({ ...appData, _secretKey: (appData.settings && appData.settings.gdriveSecret) || "" })
         })
-        .then(res => res.json())
-        .then(data => {
-          if (data && data.status === 'ok') {
-            if (badge) { badge.textContent = "SYNCED ✅"; badge.style.color = "var(--accent-green)"; }
-            if (manual) showXpToast(getLang() === 'en' ? "✅ Saved to Google Drive!" : "✅ Google Drive'a Kaydedildi!", true);
-          } else if (data && data.error === 'Unauthorized') {
-            if (badge) { badge.textContent = "KEY ERROR ❌"; badge.style.color = "var(--accent-red)"; }
-            showXpToast(getLang() === 'en' ? "❌ Wrong Secret Key!" : "❌ Parola (Secret Key) Yanlış!", true);
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.status === 'ok') {
+              if (badge) { badge.textContent = "SYNCED ✅"; badge.style.color = "var(--accent-green)"; }
+              if (manual) showXpToast(getLang() === 'en' ? "✅ Saved to Google Drive!" : "✅ Google Drive'a Kaydedildi!", true);
+            } else if (data && data.error === 'Unauthorized') {
+              if (badge) { badge.textContent = "KEY ERROR ❌"; badge.style.color = "var(--accent-red)"; }
+              showXpToast(getLang() === 'en' ? "❌ Wrong Secret Key!" : "❌ Parola (Secret Key) Yanlış!", true);
+              if (manual) {
+                alert(getLang() === 'en'
+                  ? "❌ Unauthorized: The Secret Key in the app does not match SECRET_KEY in your Google Apps Script!"
+                  : "❌ Yetkisiz İşlem: Uygulamadaki Gizli Güvenlik Anahtarı ile Google Apps Script içindeki SECRET_KEY uyuşmuyor! (Kodu güncellediyseniz Dağıt > Dağıtımları Yönet > Yeni Sürüm yapmayı unutmayın.)");
+              }
+            } else {
+              if (badge) { badge.textContent = "ERROR ❌"; badge.style.color = "var(--accent-red)"; }
+              if (manual) alert("Google Drive Yanıt Hatası: " + JSON.stringify(data));
+            }
+          })
+          .catch(err => {
+            if (badge) { badge.textContent = "CONN ERR ❌"; badge.style.color = "var(--accent-red)"; }
             if (manual) {
               alert(getLang() === 'en'
-                ? "❌ Unauthorized: The Secret Key in the app does not match SECRET_KEY in your Google Apps Script!"
-                : "❌ Yetkisiz İşlem: Uygulamadaki Gizli Güvenlik Anahtarı ile Google Apps Script içindeki SECRET_KEY uyuşmuyor! (Kodu güncellediyseniz Dağıt > Dağıtımları Yönet > Yeni Sürüm yapmayı unutmayın.)");
+                ? "❌ Connection/CORS Error: Make sure your Apps Script is deployed as a Web App with access set to 'Anyone' and updated to a 'New version'.\nDetails: " + err.message
+                : "❌ Bağlantı Hatası: Lütfen Google Apps Script kodunu güncelledikten sonra sağ üstten 'Dağıt > Dağıtımları yönet > ✏️ Kalem (Düzenle) > Sürüm: Yeni sürüm > Dağıt' yaptığınızdan ve URL'nin '/exec' ile bittiğinden emin olun.\nDetay: " + err.message);
             }
-          } else {
-            if (badge) { badge.textContent = "ERROR ❌"; badge.style.color = "var(--accent-red)"; }
-            if (manual) alert("Google Drive Yanıt Hatası: " + JSON.stringify(data));
-          }
-        })
-        .catch(err => {
-          if (badge) { badge.textContent = "CONN ERR ❌"; badge.style.color = "var(--accent-red)"; }
-          if (manual) {
-            alert(getLang() === 'en'
-              ? "❌ Connection/CORS Error: Make sure your Apps Script is deployed as a Web App with access set to 'Anyone' and updated to a 'New version'.\nDetails: " + err.message
-              : "❌ Bağlantı Hatası: Lütfen Google Apps Script kodunu güncelledikten sonra sağ üstten 'Dağıt > Dağıtımları yönet > ✏️ Kalem (Düzenle) > Sürüm: Yeni sürüm > Dağıt' yaptığınızdan ve URL'nin '/exec' ile bittiğinden emin olun.\nDetay: " + err.message);
-          }
-        });
+          });
       }, manual ? 50 : 800);
     }
 
@@ -5438,22 +5807,22 @@ function doGet(e) {
           },
           body: JSON.stringify(payload)
         })
-        .then(res => res.json())
-        .then(data => {
-          if (data && data.id) {
-            appData.settings.githubGistId = data.id;
-            document.getElementById('githubGistIdInput').value = data.id;
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
-            refreshSyncHeaderPill();
-            if (manual) showXpToast(getLang() === 'en' ? "✅ Saved to GitHub Gist!" : "✅ GitHub Gist'e Kaydedildi!", true);
-          } else if (manual) {
-            alert("GitHub API Error: " + (data.message || "Unknown error"));
-          }
-        })
-        .catch(err => {
-          updateSyncPill('', 'GH Err');
-          if (manual) alert("GitHub Sync Error: " + err.message);
-        });
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.id) {
+              appData.settings.githubGistId = data.id;
+              document.getElementById('githubGistIdInput').value = data.id;
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+              refreshSyncHeaderPill();
+              if (manual) showXpToast(getLang() === 'en' ? "✅ Saved to GitHub Gist!" : "✅ GitHub Gist'e Kaydedildi!", true);
+            } else if (manual) {
+              alert("GitHub API Error: " + (data.message || "Unknown error"));
+            }
+          })
+          .catch(err => {
+            updateSyncPill('', 'GH Err');
+            if (manual) alert("GitHub Sync Error: " + err.message);
+          });
       }, manual ? 50 : 1000);
     }
 
@@ -5470,26 +5839,26 @@ function doGet(e) {
           'Accept': 'application/vnd.github.v3+json'
         }
       })
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.files && data.files["LifeOS_AutoSync_Data.json"]) {
-          const content = data.files["LifeOS_AutoSync_Data.json"].content;
-          const parsed = JSON.parse(content);
-          if (parsed && parsed.habits) {
-            appData = parsed;
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
-            applySavedSettings();
-            renderAll();
-            showXpToast(getLang() === 'en' ? "📥 Loaded from GitHub!" : "📥 GitHub'dan Yüklendi!", true);
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.files && data.files["LifeOS_AutoSync_Data.json"]) {
+            const content = data.files["LifeOS_AutoSync_Data.json"].content;
+            const parsed = JSON.parse(content);
+            if (parsed && parsed.habits) {
+              appData = parsed;
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+              applySavedSettings();
+              renderAll();
+              showXpToast(getLang() === 'en' ? "📥 Loaded from GitHub!" : "📥 GitHub'dan Yüklendi!", true);
+            }
+          } else {
+            alert(getLang() === 'en' ? "Backup file not found in Gist." : "Gist içinde yedek dosyası bulunamadı.");
           }
-        } else {
-          alert(getLang() === 'en' ? "Backup file not found in Gist." : "Gist içinde yedek dosyası bulunamadı.");
-        }
-      })
-      .catch(err => {
-        refreshSyncHeaderPill();
-        alert("GitHub Pull Error: " + err.message);
-      });
+        })
+        .catch(err => {
+          refreshSyncHeaderPill();
+          alert("GitHub Pull Error: " + err.message);
+        });
     }
 
     function exportLocalJsonFile() {
@@ -5553,7 +5922,7 @@ function doGet(e) {
       document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
       document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
       document.getElementById('btnTopSettingsGear').classList.remove('active-gear');
-      
+
       const targetSec = document.getElementById(`view-${tabId}`);
       if (targetSec) targetSec.classList.add('active');
       if (el) el.classList.add('active');
@@ -5838,7 +6207,7 @@ function doGet(e) {
             if (translated && translated.trim()) return translated.trim();
           }
         }
-      } catch (e) {}
+      } catch (e) { }
 
       // 2. Fallback to MyMemory Free Translation API
       try {
@@ -5851,7 +6220,7 @@ function doGet(e) {
             return data2.responseData.translatedText.trim();
           }
         }
-      } catch (e) {}
+      } catch (e) { }
 
       // 3. Offline local fitness dictionary fallback
       let out = clean;
@@ -5992,7 +6361,7 @@ function doGet(e) {
     }
 
 
-    
+
     // Icon Picker & Title Processor Engine
     const PROGRAM_PRESET_ICONS = [
       "💪", "🏋️", "🦴", "🧘", "🦵", "🔥", "⚡", "🧠", "🎯", "🏃",
@@ -6008,7 +6377,7 @@ function doGet(e) {
         if (m && m[1]) {
           return { icon: m[1].trim(), title: m[2].trim() };
         }
-      } catch (e) {}
+      } catch (e) { }
       return { icon: "💪", title: rawTitle.trim() };
     }
 
@@ -6101,7 +6470,7 @@ function doGet(e) {
         const prog = programs[currentKey];
         const currentTitle = (lang === 'en') ? (prog.title_en || prog.title_tr) : (prog.title_tr || prog.title_en);
         modalTitle.textContent = lang === 'en' ? `✏️ Edit Routine: ${currentTitle}` : `✏️ Programı Düzenle: ${currentTitle}`;
-        
+
         // Extract leading icon if present, otherwise use prog.icon or default
         const parsedTitle = extractLeadingIconAndTitle(currentTitle || "");
         peSelectedIcon = prog.icon || parsedTitle.icon || "💪";
@@ -6459,5 +6828,6 @@ function doGet(e) {
 
   </script>
 </body>
+
 </html>
 <!-- Life OS Single Relay Player Active -->
